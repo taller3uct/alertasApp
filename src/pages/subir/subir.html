@@ -1,0 +1,40 @@
+
+<ion-header>
+    
+      <ion-navbar>
+        <ion-buttons>
+          <button ion-button (click)="cerrar_modal()">
+            Cerrar
+          </button>
+        </ion-buttons>
+    
+        <ion-title>Alertar de Emergencia</ion-title>
+      </ion-navbar>
+    
+    </ion-header>
+    
+    
+    <ion-content padding>
+    
+      <ion-list>
+        <ion-item>
+          <ion-label>Tipo de Alerta</ion-label>
+          <ion-select okText="seleccionar" cancelText="cancelar" [(ngModel)]="tipo">
+            <ion-option value="Policial">Policial</ion-option>
+            <ion-option value="Ambulancia">Ambulancia</ion-option>
+            <ion-option value="Incendio">Incendio</ion-option>
+          </ion-select>
+        </ion-item>
+        <ion-item>
+          <ion-label floating>Descripcion</ion-label>
+          <ion-input type="text" [(ngModel)]="descripcion"></ion-input>
+        </ion-item>
+      </ion-list>
+    
+      <button ion-button icon-end block (click)="subir_alerta()">
+        Enviar
+        <ion-icon name="send"></ion-icon>
+      </button>
+    
+    </ion-content>
+    

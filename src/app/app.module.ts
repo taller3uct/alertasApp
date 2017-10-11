@@ -6,6 +6,21 @@ import { StatusBar } from '@ionic-native/status-bar';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
+import { AjustesProvider } from '../providers/ajustes/ajustes';
+import { UbicacionProvider } from '../providers/ubicacion/ubicacion';
+import { CargaAlertaProvider } from '../providers/carga-alerta/carga-alerta';
+import { IonicStorageModule } from "@ionic/storage";
+//base de datos
+import { AngularFireModule } from 'angularfire2';
+import { AngularFireDatabaseModule, AngularFireDatabase } from 'angularfire2/database';
+import { AngularFireAuthModule } from 'angularfire2/auth';
+import { firebaseConfig } from "../config/firebase.config";
+//mapa
+import { AgmCoreModule } from '@agm/core';
+//localizacion
+import { Geolocation } from '@ionic-native/geolocation';
+
+
 
 @NgModule({
   declarations: [
@@ -14,7 +29,14 @@ import { HomePage } from '../pages/home/home';
   ],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(MyApp)
+    IonicModule.forRoot(MyApp),
+    IonicStorageModule.forRoot(),
+    AngularFireModule.initializeApp(firebaseConfig),
+    AngularFireDatabaseModule,
+    AngularFireAuthModule,
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyBV2Y9ttsqqvbPEsHpizSelrYW-d9-bhVE'
+    })
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -24,7 +46,13 @@ import { HomePage } from '../pages/home/home';
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    AjustesProvider,
+    UbicacionProvider,
+    CargaAlertaProvider,
+    AngularFireDatabase,
+    Geolocation
   ]
 })
-export class AppModule {}
+export class AppModule {
+}
