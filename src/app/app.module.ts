@@ -7,6 +7,7 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { LoginPage } from '../pages/login/login';
+import { RegistroPage } from '../pages/registro/registro';
 import { AjustesProvider } from '../providers/ajustes/ajustes';
 import { UbicacionProvider } from '../providers/ubicacion/ubicacion';
 import { CargaAlertaProvider } from '../providers/carga-alerta/carga-alerta';
@@ -28,7 +29,8 @@ import { LoginProvider } from '../providers/login/login';
   declarations: [
     MyApp,
     HomePage,
-    LoginPage
+    LoginPage,
+    RegistroPage
   ],
   imports: [
     BrowserModule,
@@ -45,7 +47,8 @@ import { LoginProvider } from '../providers/login/login';
   entryComponents: [
     MyApp,
     HomePage,
-    LoginPage
+    LoginPage,
+    RegistroPage
   ],
   providers: [
     StatusBar,
