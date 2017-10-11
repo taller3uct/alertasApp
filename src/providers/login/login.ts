@@ -16,6 +16,7 @@ export class LoginProvider {
 
   constructor(private afAuth:AngularFireAuth) {
     console.log('Hello LoginProvider Provider');
+    this.afAuth.auth.setPersistence("local");
   }
 
   isLogin(){
