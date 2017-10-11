@@ -1,9 +1,12 @@
 import { Component } from '@angular/core';
 import { NavController, ModalController, MenuController } from 'ionic-angular';
 import { SubirPage } from "../subir/subir";
+import { LoginPage } from "../login/login";
 
 import { AngularFireDatabase } from 'angularfire2/database';
 import { Observable } from 'rxjs/Observable';
+
+import { LoginProvider } from "../../providers/login/login";
 
 @Component({
   selector: 'page-home',
@@ -12,7 +15,8 @@ import { Observable } from 'rxjs/Observable';
 export class HomePage {
   alertas:Observable<any[]>
 
-  constructor(public navCtrl: NavController, private afDB:AngularFireDatabase, private modalCtrl: ModalController, private menuCtrl:MenuController) {
+  constructor(public navCtrl: NavController, private afDB:AngularFireDatabase, private modalCtrl: ModalController, private menuCtrl:MenuController, private _login:LoginProvider) {
+    
     this.alertas = afDB.list('/alertas').valueChanges();
   }
 
@@ -82,5 +86,10 @@ export class HomePage {
  toggleMenu() {
    this.menuCtrl.toggle();
  }
+
+ logout(){
+  this.navCtrl.setRoot(LoginPage);
+  this._login.logout(); 
+}
 
 }

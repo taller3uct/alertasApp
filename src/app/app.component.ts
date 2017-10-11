@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Platform } from 'ionic-angular';
+import { Platform, NavController } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { HomePage } from '../pages/home/home';
@@ -40,9 +40,10 @@ export class MyApp {
     });
   }
 
-  logout(){
-    this._login.logout();
-    this.rootPage = LoginPage;
-  }
+  //logout() {
+  //  this.rootPage = LoginPage;
+  //  this._login.logout();
+
+  //}
 }
 
