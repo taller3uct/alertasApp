@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { HomePage } from "../home/home";
 import { AjustesProvider } from "../../providers/ajustes/ajustes";
+import { LoginPage } from "../login/login";
 
 /**
  * Generated class for the IntroduccionPage page.
@@ -43,7 +44,7 @@ export class IntroduccionPage {
       this._ajustes.ajustes.mostrar_tutorial = false;
       this._ajustes.guardar_storage();
   
-      this.navCtrl.setRoot( HomePage );
+      this.navCtrl.setRoot( LoginPage );
   
     }
   
