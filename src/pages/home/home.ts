@@ -17,7 +17,15 @@ export class HomePage {
 
   constructor(public navCtrl: NavController, private afDB:AngularFireDatabase, private modalCtrl: ModalController, private menuCtrl:MenuController, private _login:LoginProvider) {
     
-    this.alertas = afDB.list('/alertas').valueChanges();
+    this._login.isLogin().then(res =>{
+      if(res){
+        this.alertas = afDB.list('/alertas').valueChanges();
+      }else{
+        this.navCtrl.setRoot(LoginPage);
+      }
+    });
+
+    
   }
 
   motrar_modal(){
