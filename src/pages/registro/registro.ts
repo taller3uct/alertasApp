@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { Usuario } from '../../models/usuario';
 import { LoginProvider } from '../../providers/login/login';
+import { HomePage } from '../home/home'
 
 /**
  * Generated class for the RegistroPage page.
@@ -28,7 +29,12 @@ export class RegistroPage {
 
   registrar(){
     if(this.usuario.clave = this.clave2){
-      this._login.registrar(this.usuario);
+      this._login.registrar(this.usuario).then(data=>{
+        this.navCtrl.setRoot(HomePage);
+      }).catch(error=>{
+        console.error(error);
+      });
+      
     }
   }
 

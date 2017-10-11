@@ -32,7 +32,7 @@ export class LoginProvider {
   login(usuario:Usuario){
     try {
       const res = this.afAuth.auth.signInWithEmailAndPassword(usuario.correo,usuario.clave);
-      console.log(res);
+      return res;
       
     } catch (error) {
       console.log(error);
@@ -41,10 +41,12 @@ export class LoginProvider {
 
   logout(){
     const res = this.afAuth.auth.signOut();
+    return res;
   }
 
   registrar(usuario:Usuario){
     const res = this.afAuth.auth.createUserWithEmailAndPassword(usuario.correo,usuario.clave);
+    return res;
   }
 
 }

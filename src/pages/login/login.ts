@@ -27,10 +27,12 @@ export class LoginPage {
     console.log('ionViewDidLoad LoginPage');
   }
 
-  login(usuario:Usuario){
-    if(this._login.login(usuario)){
+  login(){
+    this._login.login(this.usuario).then(data=>{
       this.navCtrl.setRoot(HomePage);
-    } 
+    }).catch(error=>{
+      console.error(error)
+    })
   }
 
   registrar(){
