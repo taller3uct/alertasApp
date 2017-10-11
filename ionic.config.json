@@ -1,6 +1,6 @@
 {
   "name": "alertasApp",
-  "app_id": "",
+  "app_id": "f20ee3b1",
   "type": "ionic-angular",
   "integrations": {
     "cordova": {}
