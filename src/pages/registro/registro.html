@@ -13,15 +13,15 @@
     <form (ngSubmit)="registrar()" #loginForm="ngForm">
       <ion-item>
         <ion-label floating>Correo</ion-label>
-        <ion-input type="text" [(ngModel)] = "usuario.correo" name="correo" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$"></ion-input>
+        <ion-input type="text" [(ngModel)] = "usuario.correo" name="correo" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" placeholder="Ingrese correo electronico"></ion-input>
       </ion-item>
       <ion-item>
         <ion-label floating>Contraseña</ion-label>
-        <ion-input type="password" [(ngModel)] = "usuario.clave" name="clave" required minlength="6"></ion-input>
+        <ion-input type="password" [(ngModel)] = "usuario.clave" name="clave" required minlength="6" placeholder="Ingrese una contraseña"></ion-input>
       </ion-item>
       <ion-item>
-          <ion-label floating>Contraseña</ion-label>
-          <ion-input type="password" [(ngModel)] = "clave2" name="clave2" required minlength="6"></ion-input>
+          <ion-label floating>Reingresar</ion-label>
+          <ion-input type="password" [(ngModel)] = "clave2" name="clave2" required minlength="6" placeholder="Reingrese su contraseña"></ion-input>
         </ion-item>
       <button ion-button type="submit" [disabled]="!loginForm.valid">Registrar</button>
     </form>
