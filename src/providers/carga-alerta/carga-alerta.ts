@@ -33,6 +33,7 @@ export class CargaAlertaProvider {
           };
           let $key = this.afDB.database.ref('/alertas').push( alerta ).key;
           alerta.$key = $key;
+          console.log(alerta.$key);
           resolve();
         });
     

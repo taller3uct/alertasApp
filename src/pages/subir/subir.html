@@ -19,7 +19,7 @@
       <ion-list>
         <ion-item>
           <ion-label>Tipo de Alerta</ion-label>
-          <ion-select okText="seleccionar" cancelText="cancelar" [(ngModel)]="tipo">
+          <ion-select [(ngModel)]="tipo" interface="popover" placeholder="Policial">
             <ion-option value="Policial">Policial</ion-option>
             <ion-option value="Ambulancia">Ambulancia</ion-option>
             <ion-option value="Incendio">Incendio</ion-option>

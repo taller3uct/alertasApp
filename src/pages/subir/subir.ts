@@ -18,7 +18,7 @@ import { UbicacionProvider } from "../../providers/ubicacion/ubicacion";
 })
 export class SubirPage {
 
-  tipo:string = "";
+  tipo:string = "Policial";
   descripcion:string = "";
 
   constructor(private viewCtrl: ViewController, private _cas:CargaAlertaProvider, private loadingCtrl:LoadingController, private _ubicacion:UbicacionProvider) {
