@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams, LoadingController } from 'ionic-angular';
 import { Usuario } from '../../models/usuario';
 import { LoginProvider } from '../../providers/login/login';
 import { RegistroPage } from '../registro/registro';
@@ -17,10 +17,11 @@ import { HomePage } from '../home/home';
   templateUrl: 'login.html',
 })
 export class LoginPage {
+  estado = "";
 
   usuario = {} as Usuario;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private _login:LoginProvider) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private _login:LoginProvider, private loadingCtrl:LoadingController) {
   }
 
   ionViewDidLoad() {
@@ -28,10 +29,17 @@ export class LoginPage {
   }
 
   login(){
+    let loader = this.loadingCtrl.create({
+      content: "Entrando..."
+    });
+    loader.present();
     this._login.login(this.usuario).then(data=>{
+      loader.dismiss();
       this.navCtrl.setRoot(HomePage);
     }).catch(error=>{
+      loader.dismiss();
       console.error(error)
+      this.estado = "La contraseña no es válida o el usuario no tiene una contraseña.";
     })
   }
 
