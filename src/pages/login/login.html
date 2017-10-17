@@ -14,17 +14,31 @@
 
 
 <ion-content padding>
-  <form (ngSubmit)="login()" #loginForm="ngForm">
-    <ion-item>
-      <ion-label floating>Correo</ion-label>
-      <ion-input type="email" [(ngModel)] = "usuario.correo" name="correo" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$"></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-label floating>Contraseña</ion-label>
-      <ion-input type="password" [(ngModel)] = "usuario.clave" name="clave" required minlength="6"></ion-input>
-    </ion-item>
-    <button ion-button type="submit" [disabled]="!loginForm.valid">Ingresar</button>
-    
-  </form>
-  <button ion-button color="light" (click)="registrar()">Registrar</button>
+  <ion-grid>
+    <ion-row>
+      <ion-col col-12>
+        <form (ngSubmit)="login()" #loginForm="ngForm">
+          <ion-item>
+            <ion-label floating>Correo</ion-label>
+            <ion-input type="email" [(ngModel)]="usuario.correo" name="correo" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label floating>Contraseña</ion-label>
+            <ion-input type="password" [(ngModel)]="usuario.clave" name="clave" required minlength="6"></ion-input>
+          </ion-item>
+        </form>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col col-6>
+        <button ion-button [disabled]="!loginForm.valid" block (click)="login()">Ingresar</button>
+      </ion-col>
+      <ion-col col-6>
+        <button ion-button color="light" (click)="registrar()" block>Registrar</button>
+      </ion-col>
+      <ion-col><p>{{estado}}</p></ion-col>
+    </ion-row>
+  </ion-grid>
+
+
 </ion-content>
