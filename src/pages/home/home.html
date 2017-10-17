@@ -22,7 +22,7 @@
   <agm-map [latitude]="alerta.lat" [longitude]="alerta.lon" [zoom]="17" [scrollwheel]="false" [mapDraggable]="false">
     <agm-marker [latitude]="alerta.lat" [longitude]="alerta.lon"></agm-marker>
   </agm-map>
-  <ion-card-content>
+  <ion-card-content (click)="descripAlert(alerta)">
     <ion-card-title>{{ alerta.tipo }}</ion-card-title>
     <p>{{ alerta.descripcion }}</p>
     <p>{{ mostrar_fecha(alerta.tiempo) }}</p>

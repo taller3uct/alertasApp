@@ -12,6 +12,7 @@ import { AjustesProvider } from '../providers/ajustes/ajustes';
 import { UbicacionProvider } from '../providers/ubicacion/ubicacion';
 import { CargaAlertaProvider } from '../providers/carga-alerta/carga-alerta';
 import { IonicStorageModule } from "@ionic/storage";
+import { DescripPage } from "../pages/descrip/descrip";
 //base de datos
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule, AngularFireDatabase } from 'angularfire2/database';
@@ -30,7 +31,8 @@ import { LoginProvider } from '../providers/login/login';
     MyApp,
     HomePage,
     LoginPage,
-    RegistroPage
+    RegistroPage,
+    DescripPage
   ],
   imports: [
     BrowserModule,
@@ -48,7 +50,8 @@ import { LoginProvider } from '../providers/login/login';
     MyApp,
     HomePage,
     LoginPage,
-    RegistroPage
+    RegistroPage,
+    DescripPage
   ],
   providers: [
     StatusBar,
