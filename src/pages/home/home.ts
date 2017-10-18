@@ -39,11 +39,6 @@ export class HomePage {
     let dia = ""
     let mes = ""
 
-    
-    
-
-
-
     if (Nfecha.getDay() == 1) {
       dia = "Lunes "
     } else if (Nfecha.getDay() == 2) {
