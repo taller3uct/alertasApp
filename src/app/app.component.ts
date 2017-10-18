@@ -5,7 +5,8 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { HomePage } from '../pages/home/home';
 import { LoginPage } from '../pages/login/login';
 import { AjustesProvider } from "../providers/ajustes/ajustes";
-import { LoginProvider } from '../providers/login/login'
+import { LoginProvider } from '../providers/login/login';
+import { JuntasPage } from "../pages/juntas/juntas";
 
 @Component({
   templateUrl: 'app.html'
@@ -13,6 +14,7 @@ import { LoginProvider } from '../providers/login/login'
 export class MyApp {
   rootPage:any;
   home = HomePage;
+  vecinos = JuntasPage;
   constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen, private _ajustes: AjustesProvider, private _login:LoginProvider, private menuCtrl:MenuController) {
     platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.

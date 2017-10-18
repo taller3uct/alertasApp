@@ -97,8 +97,10 @@ export class HomePage {
   }
 
   logout() {
-    this.navCtrl.setRoot(LoginPage);
-    this._login.logout();
+    this.navCtrl.setRoot(LoginPage).then(()=>{
+      this._login.logout();
+    })
+    //this._login.logout();
   }
 
   descripAlert(alerta: any) {
