@@ -37,15 +37,12 @@ export class HomePage {
   mostrar_fecha(num: any) {
     let Nfecha = new Date(num)
     let dia = ""
-    let fecha = ""
     let mes = ""
-    let hora = ""
-    if (Nfecha.getHours() < 10) {
-      hora = "0" + Nfecha.getHours() + ":"
-    }
-    if (Nfecha.getMinutes() < 10) {
-      hora = hora + "0" + Nfecha.getMinutes()
-    }
+
+    
+    
+
+
 
     if (Nfecha.getDay() == 1) {
       dia = "Lunes "
@@ -89,7 +86,7 @@ export class HomePage {
     }
 
 
-    return dia + Nfecha.getDate() + mes + Nfecha.getFullYear() + ", " + hora;
+    return dia + Nfecha.getDate() + mes + Nfecha.getFullYear() + ", " + Nfecha.toLocaleTimeString();
   }
 
   openMenu() {

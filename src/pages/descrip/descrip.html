@@ -14,5 +14,8 @@
 
 
 <ion-content padding>
-
+  <agm-map [latitude]="alerta.lat" [longitude]="alerta.lon" [zoom]="17" [scrollwheel]="false" [mapDraggable]="false">
+    <agm-marker [latitude]="alerta.lat" [longitude]="alerta.lon"></agm-marker>
+  </agm-map>
+  <h5>{{alerta.descripcion}}</h5>
 </ion-content>
