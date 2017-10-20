@@ -25,6 +25,7 @@ export class HomePage {
         this.navCtrl.setRoot(LoginPage);
       }
     });
+    //aqui es un cambio
 
 
   }
