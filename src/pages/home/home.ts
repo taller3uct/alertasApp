@@ -69,7 +69,7 @@ export class HomePage {
 
 
   motrar_modal() {
-    let modal = this.modalCtrl.create("SubirPage");
+    let modal = this.modalCtrl.create("SubirPage",{"coords":{"lat":this.lat,"lon":this.lon}});
     modal.present();
   }
 
@@ -80,7 +80,11 @@ export class HomePage {
       buttons:[{
         text:"Cancelar"
       },{
-        text:"Crear"
+        text:"Crear",
+        handler:()=>{
+          let modal = this.modalCtrl.create("SubirPage",{"coords":{"lat":events.coords.lat,"lon":events.coords.lng}});
+          modal.present();
+        }
       }]
     }).present()
     console.log(events);
