@@ -43,15 +43,9 @@ export class JuntasPage {
   toggleMenu() {
     this.menuCtrl.toggle();
   }
-<<<<<<< HEAD
   descripjjvv(junta: any) {
     console.log(junta.nombre);
     this.navCtrl.push(DescripJvPage,{ 'junta':junta });
-=======
-  descripjjvv(info: any) {
-    //console.log(junta.nombre);
-    this.navCtrl.push(DescripPage,{ 'info':info });
->>>>>>> v1.5
   }
 
 }

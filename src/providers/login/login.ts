@@ -14,11 +14,11 @@ import { AngularFireAuth } from 'angularfire2/auth';
 export class LoginProvider {
 
   usuario:string;
-  logeado = false;
+  logeado;
 
   constructor(private afAuth:AngularFireAuth) {
     this.afAuth.auth.setPersistence("local");
-    let temp =  this.afAuth.authState.subscribe(data => this.usuario = data.uid)
+    this.logeado =  this.afAuth.authState.subscribe(data => this.usuario = data.uid)
   }
 
   isLogin(){
@@ -42,6 +42,7 @@ export class LoginProvider {
   }
 
   logout(){
+    this.logeado.unsubscribe();
     const res = this.afAuth.auth.signOut();
     return res;
   }

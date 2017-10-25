@@ -41,14 +41,11 @@ import { CallNumber } from '@ionic-native/call-number';
     RegistroPage,
     DescripPage,
     JuntasPage,
-<<<<<<< HEAD
-    DescripJvPage
-=======
+    DescripJvPage,
     MisAlertasPage,
     UltimosPage,
     MostrarFechaPipe,
     TipoAlertaPipe
->>>>>>> v1.5
   ],
   imports: [
     BrowserModule,
@@ -69,12 +66,9 @@ import { CallNumber } from '@ionic-native/call-number';
     RegistroPage,
     DescripPage,
     JuntasPage,
-<<<<<<< HEAD
-    DescripJvPage
-=======
+    DescripJvPage,
     MisAlertasPage,
     UltimosPage
->>>>>>> v1.5
   ],
   providers: [
     StatusBar,
