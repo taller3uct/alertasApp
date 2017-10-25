@@ -3,7 +3,7 @@ import { IonicPage, NavController, NavParams, MenuController } from 'ionic-angul
 import { AngularFireDatabase } from 'angularfire2/database';
 import { Observable } from 'rxjs/Observable';
 import { LoginProvider } from "../../providers/login/login";
-import { DescripPage } from "../descrip/descrip";
+import { DescripJvPage } from "../descrip-jv/descrip-jv";
 
 /**
  * Generated class for the JuntasPage page.
@@ -44,7 +44,7 @@ export class JuntasPage {
   }
   descripjjvv(junta: any) {
     console.log(junta.nombre);
-    this.navCtrl.push(DescripPage,{ 'junta':junta });
+    this.navCtrl.push(DescripJvPage,{ 'junta':junta });
   }
 
 }

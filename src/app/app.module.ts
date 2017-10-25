@@ -14,6 +14,7 @@ import { CargaAlertaProvider } from '../providers/carga-alerta/carga-alerta';
 import { IonicStorageModule } from "@ionic/storage";
 import { DescripPage } from "../pages/descrip/descrip";
 import { JuntasPage } from "../pages/juntas/juntas";
+import { DescripJvPage } from "../pages/descrip-jv/descrip-jv";
 //base de datos
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule, AngularFireDatabase } from 'angularfire2/database';
@@ -34,7 +35,8 @@ import { LoginProvider } from '../providers/login/login';
     LoginPage,
     RegistroPage,
     DescripPage,
-    JuntasPage
+    JuntasPage,
+    DescripJvPage
   ],
   imports: [
     BrowserModule,
@@ -54,7 +56,8 @@ import { LoginProvider } from '../providers/login/login';
     LoginPage,
     RegistroPage,
     DescripPage,
-    JuntasPage
+    JuntasPage,
+    DescripJvPage
   ],
   providers: [
     StatusBar,
