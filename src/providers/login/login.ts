@@ -1,3 +1,4 @@
+import { Observable } from 'rxjs/Observable';
 import { Injectable } from '@angular/core';
 import 'rxjs/add/operator/map';
 import { Usuario } from '../../models/usuario';
@@ -12,17 +13,17 @@ import { AngularFireAuth } from 'angularfire2/auth';
 @Injectable()
 export class LoginProvider {
 
-  usuario:Usuario;
+  usuario:string;
+  logeado = false;
 
   constructor(private afAuth:AngularFireAuth) {
-    console.log('Hello LoginProvider Provider');
     this.afAuth.auth.setPersistence("local");
+    let temp =  this.afAuth.authState.subscribe(data => this.usuario = data.uid)
   }
 
   isLogin(){
     const promesa = new Promise((resolve,recject)=>{
       const res = this.afAuth.authState.subscribe(data => {
-        console.log(data);
         
         resolve(data && data.email && data.uid);
       });
@@ -48,6 +49,10 @@ export class LoginProvider {
   registrar(usuario:Usuario){
     const res = this.afAuth.auth.createUserWithEmailAndPassword(usuario.correo,usuario.clave);
     return res;
+  }
+
+  getUser(){
+    return this.usuario
   }
 
 }

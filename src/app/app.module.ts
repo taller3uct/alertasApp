@@ -1,3 +1,7 @@
+import { TipoAlertaPipe } from './../pipes/tipo-alerta/tipo-alerta';
+import { MostrarFechaPipe } from './../pipes/mostrar-fecha/mostrar-fecha';
+import { UltimosPage } from './../pages/ultimos/ultimos';
+import { MisAlertasPage } from './../pages/mis-alertas/mis-alertas';
 import { BrowserModule } from '@angular/platform-browser';
 import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
@@ -26,6 +30,7 @@ import { AgmCoreModule } from '@agm/core';
 import { Geolocation } from '@ionic-native/geolocation';
 import { LoginProvider } from '../providers/login/login';
 
+import { CallNumber } from '@ionic-native/call-number';
 
 
 @NgModule({
@@ -36,7 +41,14 @@ import { LoginProvider } from '../providers/login/login';
     RegistroPage,
     DescripPage,
     JuntasPage,
+<<<<<<< HEAD
     DescripJvPage
+=======
+    MisAlertasPage,
+    UltimosPage,
+    MostrarFechaPipe,
+    TipoAlertaPipe
+>>>>>>> v1.5
   ],
   imports: [
     BrowserModule,
@@ -57,7 +69,12 @@ import { LoginProvider } from '../providers/login/login';
     RegistroPage,
     DescripPage,
     JuntasPage,
+<<<<<<< HEAD
     DescripJvPage
+=======
+    MisAlertasPage,
+    UltimosPage
+>>>>>>> v1.5
   ],
   providers: [
     StatusBar,
@@ -68,7 +85,8 @@ import { LoginProvider } from '../providers/login/login';
     CargaAlertaProvider,
     AngularFireDatabase,
     Geolocation,
-    LoginProvider
+    LoginProvider,
+    CallNumber
   ]
 })
 export class AppModule {

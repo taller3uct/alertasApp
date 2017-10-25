@@ -1,3 +1,4 @@
+import { MisAlertasPage } from './../pages/mis-alertas/mis-alertas';
 import { Component } from '@angular/core';
 import { Platform, NavController, MenuController } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
@@ -15,6 +16,7 @@ export class MyApp {
   rootPage:any;
   home = HomePage;
   vecinos = JuntasPage;
+  misAlertas = MisAlertasPage
   constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen, private _ajustes: AjustesProvider, private _login:LoginProvider, private menuCtrl:MenuController) {
     platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.
@@ -24,7 +26,6 @@ export class MyApp {
           this.rootPage = "IntroduccionPage";
         }else{
           this._login.isLogin().then(res => {
-            console.log(res);
             
             if (res){
               this.rootPage = HomePage;

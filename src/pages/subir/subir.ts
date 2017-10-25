@@ -20,8 +20,15 @@ export class SubirPage {
 
   tipo:string = "Policial";
   descripcion:string = "";
+  lat:number;
+  lon:number;
 
-  constructor(private viewCtrl: ViewController, private _cas:CargaAlertaProvider, private loadingCtrl:LoadingController, private _ubicacion:UbicacionProvider) {
+  constructor(private viewCtrl: ViewController, private navParams: NavParams, private _cas:CargaAlertaProvider, private loadingCtrl:LoadingController, private _ubicacion:UbicacionProvider) {
+    let coords = this.navParams.get("coords");
+    console.log(coords);
+    
+    this.lat = coords.lat;
+    this.lon = coords.lon;
   }
 
   cerrar_modal(){
@@ -34,15 +41,13 @@ export class SubirPage {
       content: "subiendo alerta..."
     });
     loader.present();
-    this._ubicacion.iniciar_localizacion().then(()=>{
-      this._cas.cargar_alerta(this.tipo,this.descripcion,this._ubicacion.latitud(),this._ubicacion.longitud()).then(()=>{
-        console.log("sali");
-        loader.dismiss();
-        this.cerrar_modal();
-      },(error)=>{
-        loader.dismiss();
-        console.log("error al cargar " + error);
-      });
+    this._cas.cargar_alerta(this.tipo,this.descripcion,this.lat,this.lon).then(()=>{
+      console.log("sali");
+      loader.dismiss();
+      this.cerrar_modal();
+    },(error)=>{
+      loader.dismiss();
+      console.error("error al cargar " + error);
     });
   }
 

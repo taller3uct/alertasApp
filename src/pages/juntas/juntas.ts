@@ -1,3 +1,4 @@
+import { DescripPage } from './../descrip/descrip';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, MenuController } from 'ionic-angular';
 import { AngularFireDatabase } from 'angularfire2/database';
@@ -42,9 +43,15 @@ export class JuntasPage {
   toggleMenu() {
     this.menuCtrl.toggle();
   }
+<<<<<<< HEAD
   descripjjvv(junta: any) {
     console.log(junta.nombre);
     this.navCtrl.push(DescripJvPage,{ 'junta':junta });
+=======
+  descripjjvv(info: any) {
+    //console.log(junta.nombre);
+    this.navCtrl.push(DescripPage,{ 'info':info });
+>>>>>>> v1.5
   }
 
 }

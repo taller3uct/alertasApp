@@ -13,7 +13,6 @@ export class UbicacionProvider {
   private lon:number;
 
   constructor(private geolocation:Geolocation) {
-    console.log('Hello UbicacionProvider Provider');
   }
   iniciar_localizacion(){
     let promesa = new Promise((resolve, reject)=>{
@@ -24,11 +23,14 @@ export class UbicacionProvider {
        this.lon = resp.coords.longitude;
        resolve();
       }).catch((error) => {
-        console.log('Error getting location', error);
       });
     });
 
     return promesa;
+  }
+
+  getPos(){
+    return this.geolocation.watchPosition();
   }
 
   latitud(){
