@@ -1,3 +1,5 @@
+import { LoginProvider } from './../login/login';
+import { Alerta } from './../../models/alerta';
 import { Injectable } from '@angular/core';
 import { AngularFireDatabase } from 'angularfire2/database';
 import * as firebase from 'firebase';
@@ -15,7 +17,7 @@ export class CargaAlertaProvider {
   private fecha = new Date();
   private Nfecha = new Date(this.fecha.getDate() + 1506698739642)
 
-  constructor(public afDB: AngularFireDatabase) {
+  constructor(public afDB: AngularFireDatabase, private login: LoginProvider) {
     console.log('Hello CargaAlertaProvider Provider');
     console.log(this.Nfecha.toString())
     console.log(firebase.database.ServerValue.TIMESTAMP)
@@ -24,12 +26,14 @@ export class CargaAlertaProvider {
   cargar_alerta(tipo:string, descrip:string, lat:number, lon:number){
     
         let promesa = new Promise((resolve, reject)=>{
-          let alerta:subirAlerta = {
+          let alerta:Alerta = {
             tipo: tipo,
             descripcion: descrip,
             lat: lat,
             lon: lon,
-            tiempo: firebase.database.ServerValue.TIMESTAMP
+            tiempo: firebase.database.ServerValue.TIMESTAMP,
+            usuario: this.login.getUser(),
+            junta:''
           };
           let $key = this.afDB.database.ref('/alertas').push( alerta ).key;
           alerta.$key = $key;

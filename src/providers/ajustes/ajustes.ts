@@ -17,7 +17,6 @@ export class AjustesProvider {
 
 
   constructor( private  platform : Platform, private storage: Storage ) {
-    console.log('Hello AjustesProvider Provider');
   }
 
   cargar_storage(){
@@ -33,7 +32,6 @@ export class AjustesProvider {
         });
       }else{
         if(localStorage.getItem("ajustes")){
-          console.log('cargue del stoafe');
           this.ajustes = JSON.parse( localStorage.getItem("ajustes"));
         }
         resolve();

@@ -1,0 +1,29 @@
+<ion-header>
+  <ion-navbar>
+    <ion-buttons>
+      <button ion-button icon-only (click)="toggleMenu()"> <ion-icon name="menu"></ion-icon></button>
+    </ion-buttons>
+    <ion-title>
+        Mis Alertas
+    </ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="logout()"> <ion-icon name="log-out"></ion-icon></button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-fab top right>
+    <button ion-fab color="danger" (click)="motrar_modal()"><ion-icon name="alert"></ion-icon></button>
+  </ion-fab>
+<ion-card *ngFor="let alerta of (alertas | async)?.reverse()">
+  <agm-map [latitude]="alerta.lat" [longitude]="alerta.lon" [zoom]="17" [scrollwheel]="false" [mapDraggable]="false">
+    <agm-marker [latitude]="alerta.lat" [longitude]="alerta.lon"></agm-marker>
+  </agm-map>
+  <ion-card-content (click)="descripAlert(alerta)">
+    <ion-card-title>{{ alerta.tipo }}</ion-card-title>
+    <p>{{ alerta.descripcion }}</p>
+    <p>{{ mostrar_fecha(alerta.tiempo) }}</p>
+  </ion-card-content>
+</ion-card>
+</ion-content>

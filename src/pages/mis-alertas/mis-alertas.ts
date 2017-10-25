@@ -1,86 +1,50 @@
-import { UltimosPage } from './../ultimos/ultimos';
-import { Alerta } from './../../models/alerta';
+import { DescripPage } from './../descrip/descrip';
+import { LoginPage } from './../login/login';
 import { UbicacionProvider } from './../../providers/ubicacion/ubicacion';
-import { Component } from '@angular/core';
-import { NavController, ModalController, MenuController, NavParams } from 'ionic-angular';
-import { SubirPage } from "../subir/subir";
-import { LoginPage } from "../login/login";
-import { DescripPage } from "../descrip/descrip";
-import { CallNumber } from '@ionic-native/call-number';
-
+import { LoginProvider } from './../../providers/login/login';
 import { AngularFireDatabase } from 'angularfire2/database';
+import { Geoposition } from '@ionic-native/geolocation';
+import { Alerta } from './../../models/alerta';
 import { Observable } from 'rxjs/Observable';
+import { Component } from '@angular/core';
+import { NavController, NavParams, ModalController, MenuController } from 'ionic-angular';
 
-import { LoginProvider } from "../../providers/login/login";
+/**
+ * Generated class for the MisAlertasPage page.
+ *
+ * See https://ionicframework.com/docs/components/#navigation for more info on
+ * Ionic pages and navigation.
+ */
 
 @Component({
-  selector: 'page-home',
-  templateUrl: 'home.html'
+  selector: 'page-mis-alertas',
+  templateUrl: 'mis-alertas.html',
 })
-export class HomePage {
-  alertas: Observable<Alerta[]>;
-  posicion: Observable<Coordinates>;
-  lat: number;
-  lon: number;
+export class MisAlertasPage {
 
-  tiposAlertas = {
-    "Policial":{
-      "numero": "133",
-      "nombre": "Carabineros"
-    },
-    "Ambulancia":{
-      "numero": "131",
-      "nombre": "Ambulancia"
-    },
-    "Incendio":{
-      "numero": "132",
-      "nombre": "Bomberos"
-    }
-  }
+  alertas: Observable<Alerta[]>;
 
   constructor(public navCtrl: NavController, 
               private afDB: AngularFireDatabase, 
               private modalCtrl: ModalController, 
               private menuCtrl: MenuController, 
               private _login: LoginProvider,
-              private pos: UbicacionProvider,
-              private callNumber: CallNumber,
-              private navParams: NavParams) {
-    this.posicion = this.pos.getPos().map(a=>{
-      let coords = a.coords;
-      return coords;
-    })
-    this.pos.iniciar_localizacion().then(data=>{
-      this.lat = this.pos.latitud()
-      this.lon = this.pos.longitud()
-    })
+              private pos: UbicacionProvider) {
+
     this._login.isLogin().then(res => {
       if (res) {
-        this.alertas = afDB.list('/alertas',ref => ref.orderByChild('tiempo').startAt(this.ultimos())).valueChanges();
-        
-        
+        this.alertas = afDB.list('/alertas',ref => ref.orderByChild('usuario').equalTo(_login.getUser())).valueChanges()
       } else {
         this.navCtrl.setRoot(LoginPage);
       }
     });
     //aqui es un cambio
-  }
 
+
+  }
 
   motrar_modal() {
     let modal = this.modalCtrl.create("SubirPage");
-    modal.present();
-  }
-
-  motrar_ultimos() {
-    let modal = this.modalCtrl.create(UltimosPage,{'alertas':this.alertas});
-    modal.onDidDismiss(data => {
-      if (data){
-        this.lat = data.lat;
-        this.lon = data.lon;
-      }
-      
-    })
     modal.present();
   }
 
@@ -157,17 +121,4 @@ export class HomePage {
     console.log(alerta.tipo);
     this.navCtrl.push(DescripPage,{ 'alerta':alerta });
   }
-
-  llamar(tipo){
-    this.callNumber.callNumber(this.tiposAlertas[tipo].numero, true)
-    .then(() => console.log('Launched dialer!'))
-    .catch(() => console.log('Error launching dialer'));
-  }
-
-  ultimos(){
-    let hoy = new Date();
-    hoy.setDate(hoy.getDate()-1)
-    return hoy.getTime();
-  }
-
 }

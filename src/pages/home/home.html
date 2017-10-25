@@ -1,4 +1,4 @@
-<ion-header>
+<!-- <ion-header>
   <ion-navbar>
     <ion-buttons>
       <button ion-button icon-only (click)="toggleMenu()"> <ion-icon name="menu"></ion-icon></button>
@@ -28,4 +28,38 @@
     <p>{{ mostrar_fecha(alerta.tiempo) }}</p>
   </ion-card-content>
 </ion-card>
+</ion-content> -->
+<ion-header>
+  <ion-navbar>
+      <ion-buttons>
+          <button ion-button icon-only (click)="toggleMenu()"> <ion-icon name="menu"></ion-icon></button>
+        </ion-buttons>
+    <ion-title>
+      Alertas Cercanas
+    </ion-title>
+    <ion-buttons end>
+        <button ion-button icon-only (click)="logout()"> <ion-icon name="log-out"></ion-icon></button>
+      </ion-buttons>
+  </ion-navbar>
+</ion-header>
+<ion-content>
+    <ion-fab top right>
+        <button ion-fab color="danger" (click)="motrar_modal()"><ion-icon name="alert"></ion-icon></button>
+    </ion-fab>
+    <ion-fab bottom right>
+        <button ion-fab color="success" (click)="motrar_ultimos()"><ion-icon name="list-box"></ion-icon></button>
+    </ion-fab>
+  <agm-map [latitude]="lat" [longitude]="lon" [zoom]=17>
+    <agm-marker [label]="'yo'" [latitude]="(posicion | async)?.latitude" [longitude]="(posicion | async)?.longitude"></agm-marker>
+    <agm-marker *ngFor="let alerta of alertas | async" [latitude]="alerta.lat" [longitude]="alerta.lon" [iconUrl]="'assets/img/'+alerta.tipo+'_.png'">
+      <agm-info-window>
+        <h5>{{ alerta.tipo }}</h5>
+        <p>{{ alerta.descripcion }}</p>
+        <span>{{ mostrar_fecha(alerta.tiempo) }}</span>
+        <button ion-button small block icon-left (click)="llamar(alerta.tipo)">
+          <ion-icon name="call"></ion-icon>Lamar a {{ alerta.tipo }}
+        </button>
+      </agm-info-window>
+    </agm-marker>
+  </agm-map>
 </ion-content>
