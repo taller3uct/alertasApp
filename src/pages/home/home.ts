@@ -2,7 +2,7 @@ import { UltimosPage } from './../ultimos/ultimos';
 import { Alerta } from './../../models/alerta';
 import { UbicacionProvider } from './../../providers/ubicacion/ubicacion';
 import { Component } from '@angular/core';
-import { NavController, ModalController, MenuController, NavParams } from 'ionic-angular';
+import { NavController, ModalController, MenuController, NavParams, AlertController } from 'ionic-angular';
 import { SubirPage } from "../subir/subir";
 import { LoginPage } from "../login/login";
 import { DescripPage } from "../descrip/descrip";
@@ -45,7 +45,8 @@ export class HomePage {
               private _login: LoginProvider,
               private pos: UbicacionProvider,
               private callNumber: CallNumber,
-              private navParams: NavParams) {
+              private navParams: NavParams,
+              private alertCtrl: AlertController) {
     this.posicion = this.pos.getPos().map(a=>{
       let coords = a.coords;
       return coords;
@@ -70,6 +71,22 @@ export class HomePage {
   motrar_modal() {
     let modal = this.modalCtrl.create("SubirPage");
     modal.present();
+  }
+
+  motrar_modal2(events) {
+    this.alertCtrl.create({
+      title:"Nueva Alerta",
+      message:"¿Desea agregar una nueva alerta en este punto?",
+      buttons:[{
+        text:"Cancelar"
+      },{
+        text:"Crear"
+      }]
+    }).present()
+    console.log(events);
+    
+    // let modal = this.modalCtrl.create("SubirPage",{"lat":events.lat});
+    // modal.present();
   }
 
   motrar_ultimos() {

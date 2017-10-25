@@ -49,7 +49,7 @@
     <ion-fab bottom right>
         <button ion-fab color="success" (click)="motrar_ultimos()"><ion-icon name="list-box"></ion-icon></button>
     </ion-fab>
-  <agm-map [latitude]="lat" [longitude]="lon" [zoom]=17>
+  <agm-map [latitude]="lat" [longitude]="lon" [zoom]=17 [clickableIcons]="false" (mapDblClick)="motrar_modal2($event)" [disableDoubleClickZoom]="true" >
     <agm-marker [label]="'yo'" [latitude]="(posicion | async)?.latitude" [longitude]="(posicion | async)?.longitude"></agm-marker>
     <agm-marker *ngFor="let alerta of alertas | async" [latitude]="alerta.lat" [longitude]="alerta.lon" [iconUrl]="'assets/img/'+alerta.tipo+'_.png'">
       <agm-info-window>
@@ -57,7 +57,7 @@
         <p>{{ alerta.descripcion }}</p>
         <span>{{ mostrar_fecha(alerta.tiempo) }}</span>
         <button ion-button small block icon-left (click)="llamar(alerta.tipo)">
-          <ion-icon name="call"></ion-icon>Lamar a {{ alerta.tipo }}
+          <ion-icon name="call"></ion-icon>Lamar a {{ (alerta.tipo | tipoAlerta).nombre }}
         </button>
       </agm-info-window>
     </agm-marker>

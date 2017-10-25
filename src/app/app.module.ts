@@ -1,3 +1,4 @@
+import { TipoAlertaPipe } from './../pipes/tipo-alerta/tipo-alerta';
 import { MostrarFechaPipe } from './../pipes/mostrar-fecha/mostrar-fecha';
 import { UltimosPage } from './../pages/ultimos/ultimos';
 import { MisAlertasPage } from './../pages/mis-alertas/mis-alertas';
@@ -41,7 +42,8 @@ import { CallNumber } from '@ionic-native/call-number';
     JuntasPage,
     MisAlertasPage,
     UltimosPage,
-    MostrarFechaPipe
+    MostrarFechaPipe,
+    TipoAlertaPipe
   ],
   imports: [
     BrowserModule,
