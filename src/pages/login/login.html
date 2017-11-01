@@ -1,43 +1,47 @@
-<!--
-  Generated template for the LoginPage page.
-
-  See http://ionicframework.com/docs/components/#navigation for more info on
-  Ionic pages and navigation.
--->
-<ion-header>
-
-  <ion-navbar>
-    <ion-title>Login</ion-title>
-  </ion-navbar>
-
-</ion-header>
-
-
-<ion-content padding>
+<ion-content padding class="login">
   <ion-grid>
     <ion-row>
-      <ion-col col-12>
-        <form (ngSubmit)="login()" #loginForm="ngForm">
-          <ion-item>
-            <ion-label floating>Correo</ion-label>
-            <ion-input type="email" [(ngModel)]="usuario.correo" name="correo" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$"></ion-input>
-          </ion-item>
-          <ion-item>
-            <ion-label floating>Contraseña</ion-label>
-            <ion-input type="password" [(ngModel)]="usuario.clave" name="clave" required minlength="6"></ion-input>
-          </ion-item>
-        </form>
+      <ion-col col-3></ion-col>
+      <ion-col col-6 text-center>
+        <img src="assets/img/iconoAlarma.png">
       </ion-col>
+      <ion-col col-3></ion-col>
     </ion-row>
     <ion-row>
-      <ion-col col-6>
-        <button ion-button [disabled]="!loginForm.valid" block (click)="login()">Ingresar</button>
-      </ion-col>
-      <ion-col col-6>
-        <button ion-button color="light" (click)="registrar()" block>Registrar</button>
-      </ion-col>
-      <ion-col><p>{{estado}}</p></ion-col>
+      <ion-col col-3></ion-col>
+        <ion-col col-6 text-center>
+          <h3>AlarmaApp</h3>
+        </ion-col>
+      <ion-col col-3></ion-col>
     </ion-row>
+    <div>
+        <ion-row>
+          <ion-col></ion-col>
+          <ion-col col-12 col-sm-9 col-md-6 col-lg-4 col-xl-2>
+            <form (ngSubmit)="login()" #loginForm="ngForm">
+              <ion-item class="inputTop">
+                <ion-label stacked>Correo</ion-label>
+                <ion-input type="email" [(ngModel)]="usuario.correo" name="correo" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$"></ion-input>
+              </ion-item>
+              <ion-item class="inputBottom">
+                <ion-label stacked>Contraseña</ion-label>
+                <ion-input type="password" [(ngModel)]="usuario.clave" name="clave" required minlength="6"></ion-input>
+              </ion-item>
+            </form>
+          </ion-col>
+          <ion-col></ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col></ion-col>
+            <ion-col col-5 col-sm-4 col-md-3 col-lg-2 col-xl-1>
+              <button ion-button color="danger" [disabled]="!loginForm.valid" block (click)="login()">Ingresar</button>
+            </ion-col>
+            <ion-col col-5 col-sm-4 col-md-3 col-lg-2 col-xl-1>
+              <button ion-button outline color="danger" (click)="registrar()" block>Registrarse</button>
+            </ion-col>
+            <ion-col></ion-col>
+          </ion-row>
+    </div>
   </ion-grid>
 
 

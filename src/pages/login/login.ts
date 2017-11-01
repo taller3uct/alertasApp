@@ -21,6 +21,8 @@ export class LoginPage {
 
   usuario = {} as Usuario;
 
+  imagen = "assets/img/iconoAlarma.png";
+
   constructor(public navCtrl: NavController, public navParams: NavParams, private _login:LoginProvider, private loadingCtrl:LoadingController) {
   }
 
