@@ -36,7 +36,6 @@ export class LoginPage {
     });
     loader.present();
     this._login.login(this.usuario).then(data=>{
-      this._login.obsUid();
       loader.dismiss();
       this.navCtrl.setRoot(HomePage);
     }).catch(error=>{

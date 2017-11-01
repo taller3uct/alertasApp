@@ -17,13 +17,18 @@ export class LoginProvider {
   logeado;
 
   constructor(private afAuth:AngularFireAuth) {
-    
+    this.afAuth.auth.setPersistence("local");
+    this.logeado =  this.afAuth.authState.subscribe(data => {
+      if(data){
+        this.usuario = data.uid
+      }
+    })
   }
 
   isLogin(){
     const promesa = new Promise((resolve,recject)=>{
       const res = this.afAuth.authState.subscribe(data => {
-        
+        console.log(this.usuario)
         resolve(data && data.email && data.uid);
       });
     })
@@ -52,12 +57,7 @@ export class LoginProvider {
   }
 
   getUser(){
-    return this.usuario
-  }
-
-  obsUid(){
-    this.afAuth.auth.setPersistence("local");
-    this.logeado =  this.afAuth.authState.subscribe(data => this.usuario = data.uid)
+    return this.usuario;
   }
 
 }
