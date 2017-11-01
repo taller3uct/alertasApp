@@ -21,9 +21,6 @@ page-login {
     .inputBottom {
         border-radius: 0px 00px 20px 20px !important;  
     }
-    .login-box {
-        max-width: 400px
-    }
 
     button {
         border-radius: 20px !important;  
@@ -31,5 +28,8 @@ page-login {
     ion-grid {
         height: 100%;
         justify-content: center;
+    }
+    a {
+        color: white;
     }
 }
