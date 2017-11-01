@@ -17,8 +17,7 @@ export class LoginProvider {
   logeado;
 
   constructor(private afAuth:AngularFireAuth) {
-    this.afAuth.auth.setPersistence("local");
-    this.logeado =  this.afAuth.authState.subscribe(data => this.usuario = data.uid)
+    
   }
 
   isLogin(){
@@ -54,6 +53,11 @@ export class LoginProvider {
 
   getUser(){
     return this.usuario
+  }
+
+  obsUid(){
+    this.afAuth.auth.setPersistence("local");
+    this.logeado =  this.afAuth.authState.subscribe(data => this.usuario = data.uid)
   }
 
 }

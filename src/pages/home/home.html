@@ -57,7 +57,7 @@
         <p>{{ alerta.descripcion }}</p>
         <span>{{ mostrar_fecha(alerta.tiempo) }}</span>
         <button ion-button small block icon-left (click)="llamar(alerta.tipo)">
-          <ion-icon name="call"></ion-icon>Lamar a {{ (alerta.tipo | tipoAlerta).nombre }}
+          <ion-icon name="call"></ion-icon>Llamar a {{ (alerta.tipo | tipoAlerta).nombre }}
         </button>
       </agm-info-window>
     </agm-marker>
