@@ -32,6 +32,8 @@ import { LoginProvider } from '../providers/login/login';
 
 import { CallNumber } from '@ionic-native/call-number';
 
+import { LOCALE_ID } from "@angular/core";
+
 
 @NgModule({
   declarations: [
@@ -80,7 +82,7 @@ import { CallNumber } from '@ionic-native/call-number';
     AngularFireDatabase,
     Geolocation,
     LoginProvider,
-    CallNumber
+    CallNumber, { provide: LOCALE_ID, useValue: "es" }
   ]
 })
 export class AppModule {

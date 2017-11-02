@@ -23,7 +23,7 @@
   <ion-card-content (click)="descripAlert(alerta)">
     <ion-card-title>{{ alerta.tipo }}</ion-card-title>
     <p>{{ alerta.descripcion }}</p>
-    <p>{{ mostrar_fecha(alerta.tiempo) }}</p>
+    <p>{{ alerta.tiempo | date:'EEEE d MMMM y H:mm:ss' }}</p>
   </ion-card-content>
 </ion-card>
 </ion-content>

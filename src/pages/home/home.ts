@@ -2,7 +2,7 @@ import { UltimosPage } from './../ultimos/ultimos';
 import { Alerta } from './../../models/alerta';
 import { UbicacionProvider } from './../../providers/ubicacion/ubicacion';
 import { Component } from '@angular/core';
-import { NavController, ModalController, MenuController, NavParams, AlertController } from 'ionic-angular';
+import { NavController, ModalController, MenuController, NavParams, ActionSheetController } from 'ionic-angular';
 import { SubirPage } from "../subir/subir";
 import { LoginPage } from "../login/login";
 import { DescripPage } from "../descrip/descrip";
@@ -22,6 +22,7 @@ export class HomePage {
   posicion: Observable<Coordinates>;
   lat: number;
   lon: number;
+  tempMarker = {ver:false,lat:0,lon:0};
 
   tiposAlertas = {
     "Policial":{
@@ -46,7 +47,7 @@ export class HomePage {
               private pos: UbicacionProvider,
               private callNumber: CallNumber,
               private navParams: NavParams,
-              private alertCtrl: AlertController) {
+              private actionSheetCtrl: ActionSheetController) {
     this.posicion = this.pos.getPos().map(a=>{
       let coords = a.coords;
       return coords;
@@ -54,6 +55,8 @@ export class HomePage {
     this.pos.iniciar_localizacion().then(data=>{
       this.lat = this.pos.latitud()
       this.lon = this.pos.longitud()
+      this.tempMarker.lat = this.lat;
+      this.tempMarker.lon = this.lon;
     })
     this._login.isLogin().then(res => {
       if (res) {
@@ -74,16 +77,24 @@ export class HomePage {
   }
 
   motrar_modal2(events) {
-    this.alertCtrl.create({
-      title:"Nueva Alerta",
-      message:"¿Desea agregar una nueva alerta en este punto?",
+    this.tempMarker.ver = true;
+    this.tempMarker.lat = events.coords.lat;
+    this.tempMarker.lon = events.coords.lng;
+    this.actionSheetCtrl.create({
+      // title:"Nueva Alerta",
+      title:"¿Desea agregar una nueva alerta en este punto?",
       buttons:[{
-        text:"Cancelar"
+        text:"Cancelar",
+        role: 'cancel',
+        handler:()=>{
+          this.tempMarker.ver = false;
+        }
       },{
         text:"Crear",
         handler:()=>{
           let modal = this.modalCtrl.create("SubirPage",{"coords":{"lat":events.coords.lat,"lon":events.coords.lng}});
           modal.present();
+          this.tempMarker.ver = false;
         }
       }]
     }).present()
@@ -105,55 +116,55 @@ export class HomePage {
     modal.present();
   }
 
-  mostrar_fecha(num: any) {
-    let Nfecha = new Date(num)
-    let dia = ""
-    let mes = ""
+  // mostrar_fecha(num: any) {
+  //   let Nfecha = new Date(num)
+  //   let dia = ""
+  //   let mes = ""
 
-    if (Nfecha.getDay() == 1) {
-      dia = "Lunes "
-    } else if (Nfecha.getDay() == 2) {
-      dia = "Martes "
-    } else if (Nfecha.getDay() == 3) {
-      dia = "Miercoles "
-    } else if (Nfecha.getDay() == 4) {
-      dia = "Jueves "
-    } else if (Nfecha.getDay() == 5) {
-      dia = "Viernes "
-    } else if (Nfecha.getDay() == 6) {
-      dia = "Sabado "
-    } else if (Nfecha.getDay() == 7) {
-      dia = "Domingo "
-    }
-    if (Nfecha.getMonth() == 0) {
-      mes = " Enero, "
-    } else if (Nfecha.getMonth() == 1) {
-      mes = " Febrero, "
-    } else if (Nfecha.getMonth() == 2) {
-      mes = " Marzo, "
-    } else if (Nfecha.getMonth() == 3) {
-      mes = " Abril, "
-    } else if (Nfecha.getMonth() == 4) {
-      mes = " Mayo, "
-    } else if (Nfecha.getMonth() == 5) {
-      mes = " Junio, "
-    } else if (Nfecha.getMonth() == 6) {
-      mes = " Julio, "
-    } else if (Nfecha.getMonth() == 7) {
-      mes = " Agosto, "
-    } else if (Nfecha.getMonth() == 8) {
-      mes = " Septiembre, "
-    } else if (Nfecha.getMonth() == 9) {
-      mes = " Octubre, "
-    } else if (Nfecha.getMonth() == 10) {
-      mes = " Noviembre, "
-    } else if (Nfecha.getMonth() == 11) {
-      mes = " Diciembre, "
-    }
+  //   if (Nfecha.getDay() == 1) {
+  //     dia = "Lunes "
+  //   } else if (Nfecha.getDay() == 2) {
+  //     dia = "Martes "
+  //   } else if (Nfecha.getDay() == 3) {
+  //     dia = "Miercoles "
+  //   } else if (Nfecha.getDay() == 4) {
+  //     dia = "Jueves "
+  //   } else if (Nfecha.getDay() == 5) {
+  //     dia = "Viernes "
+  //   } else if (Nfecha.getDay() == 6) {
+  //     dia = "Sabado "
+  //   } else if (Nfecha.getDay() == 7) {
+  //     dia = "Domingo "
+  //   }
+  //   if (Nfecha.getMonth() == 0) {
+  //     mes = " Enero, "
+  //   } else if (Nfecha.getMonth() == 1) {
+  //     mes = " Febrero, "
+  //   } else if (Nfecha.getMonth() == 2) {
+  //     mes = " Marzo, "
+  //   } else if (Nfecha.getMonth() == 3) {
+  //     mes = " Abril, "
+  //   } else if (Nfecha.getMonth() == 4) {
+  //     mes = " Mayo, "
+  //   } else if (Nfecha.getMonth() == 5) {
+  //     mes = " Junio, "
+  //   } else if (Nfecha.getMonth() == 6) {
+  //     mes = " Julio, "
+  //   } else if (Nfecha.getMonth() == 7) {
+  //     mes = " Agosto, "
+  //   } else if (Nfecha.getMonth() == 8) {
+  //     mes = " Septiembre, "
+  //   } else if (Nfecha.getMonth() == 9) {
+  //     mes = " Octubre, "
+  //   } else if (Nfecha.getMonth() == 10) {
+  //     mes = " Noviembre, "
+  //   } else if (Nfecha.getMonth() == 11) {
+  //     mes = " Diciembre, "
+  //   }
 
 
-    return dia + Nfecha.getDate() + mes + Nfecha.getFullYear() + ", " + Nfecha.toLocaleTimeString();
-  }
+  //   return dia + Nfecha.getDate() + mes + Nfecha.getFullYear() + ", " + Nfecha.toLocaleTimeString();
+  // }
 
   openMenu() {
     this.menuCtrl.open();

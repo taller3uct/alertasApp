@@ -26,7 +26,7 @@
         <ion-card-content (click)="volver(alerta)">
           <ion-card-title>{{ alerta.tipo }}</ion-card-title>
           <p>{{ alerta.descripcion }}</p>
-          <p>{{ alerta.tiempo | mostrarFecha }}</p>
+          <p>{{ alerta.tiempo | date:'EEEE d MMMM y H:mm:ss' }}</p>
         </ion-card-content>
       </ion-card>
 </ion-content>
