@@ -198,7 +198,7 @@ export class HomePage {
 
   ultimos(){
     let hoy = new Date();
-    hoy.setDate(hoy.getDate()-1)
+    hoy.setDate(hoy.getDate())
     return hoy.getTime();
   }
 

@@ -19,15 +19,17 @@ npm-debug.log*
 .versions/
 coverage/
 dist/
-node_modules/
+movil/node_modules/
+web/node_modules/
 tmp/
 temp/
 hooks/
-platforms/
-plugins/
-plugins/android.json
-plugins/ios.json
-www/
+movil/platforms/
+movil/plugins/
+movil/plugins/android.json
+movil/plugins/ios.json
+movil/www/
+web/www/
 $RECYCLE.BIN/
 
 .DS_Store

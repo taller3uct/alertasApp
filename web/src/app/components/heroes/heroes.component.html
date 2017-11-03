@@ -1,0 +1,41 @@
+<h1>Registros <small> Generales</small></h1>
+<hr>
+<!--
+<div class="card-colums">
+    <!-- FOR DE LA LISTA DE GET -->
+ <!--   <div class="card " *ngFor="let heroe of heroes; let i = index" style="width: 20rem;">
+      <!-- arreglo de imagenes heroe -->
+ <!--       <img class="card-img-top img fluid" [src]="heroe.img" [alt]="heroe.nombre">
+        <div class="card-block">
+          <h4 class="card-title"> {{ heroe.nombre }} </h4>
+          <p class="card-text"> Emergencia </p>
+          <p class="card-text"> Descripcion</p>
+          <p class="card-text"> {{heroe.bio }} .</p>
+          <p class="card-text"><small class="text-muted">{{ heroe.aparicion }}</small></p>
+
+          <button (click)="verHeroe(i)" type="button" class="btn btn-outline-primary btn-block" >
+            Ver más...
+          </button> 
+          <!-- Enrutamiento y carga del arreglo i de los heroes cargados en let = index  y indico
+          que heroe y que id tiene-->
+         <!--  <a [routerLink]="['/heroe',i]" class="btn btn-outline-primary">ver mas link </a> -->
+<!--        </div>
+      </div>
+</div> -->
+
+
+<div class="card-columns animated fadeIn">
+    <div class="card" *ngFor="let alarma of (alarmas | async)?.reverse(); let i = index">
+        <!-- <img class="card-img-top" src="" alt="Card image cap"> -->
+        <agm-map [latitude]="alarma.lat" [longitude]="alarma.lon" [zoom]="16" [scrollwheel]="false" [mapDraggable]="false">
+            <agm-marker [latitude]="alarma.lat" [longitude]="alarma.lon"></agm-marker>
+          </agm-map>
+        <div class="card-body">
+          <h4 class="card-title">{{alarma.tipo}}</h4>
+          <p class="card-text">{{alarma.descripcion}}</p>
+          <button (click)="verHeroe(i)" type="button" class="btn btn-outline-primary btn-block" >
+              Ver más...
+            </button> 
+        </div>
+      </div>
+    </div>

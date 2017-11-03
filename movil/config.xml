@@ -78,6 +78,7 @@
     </platform>
     <allow-navigation href="http://10.0.1.10:8101" />
     <allow-navigation href="http://192.168.3.16:8101" />
+    <allow-navigation href="http://172.16.211.129:8101" />
     <engine name="ios" spec="^4.5.2" />
     <engine name="android" spec="~6.3.0" />
     <plugin name="cordova-sqlite-storage" spec="^2.0.4" />
