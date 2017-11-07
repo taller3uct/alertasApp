@@ -31,6 +31,8 @@ import { Geolocation } from '@ionic-native/geolocation';
 import { LoginProvider } from '../providers/login/login';
 
 import { CallNumber } from '@ionic-native/call-number';
+import { LocalNotifications } from '@ionic-native/local-notifications';
+import { BackgroundMode } from '@ionic-native/background-mode';
 
 import { LOCALE_ID } from "@angular/core";
 
@@ -82,6 +84,8 @@ import { LOCALE_ID } from "@angular/core";
     AngularFireDatabase,
     Geolocation,
     LoginProvider,
+    LocalNotifications,
+    BackgroundMode,
     CallNumber, { provide: LOCALE_ID, useValue: "es" }
   ]
 })
