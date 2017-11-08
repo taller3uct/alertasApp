@@ -1,9 +1,9 @@
+import { DbProvider } from './../../providers/db/db';
 import { DescripPage } from './../descrip/descrip';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, MenuController } from 'ionic-angular';
 import { AngularFireDatabase } from 'angularfire2/database';
 import { Observable } from 'rxjs/Observable';
-import { LoginProvider } from "../../providers/login/login";
 import { DescripJvPage } from "../descrip-jv/descrip-jv";
 
 /**
@@ -20,12 +20,8 @@ import { DescripJvPage } from "../descrip-jv/descrip-jv";
 })
 export class JuntasPage {
   juntas: Observable<any[]>
-  constructor(public navCtrl: NavController, public navParams: NavParams, private menuCtrl: MenuController,  private afDB: AngularFireDatabase, private _login: LoginProvider) {
-    this._login.isLogin().then(res => {
-      if (res) {
-        this.juntas = afDB.list('/juntas').valueChanges();
-      }
-    });
+  constructor(public navCtrl: NavController, public navParams: NavParams, private menuCtrl: MenuController,  private afDB: AngularFireDatabase, private db: DbProvider) {
+    this.juntas = this.db.getJuntas();
   }
 
   ionViewDidLoad() {
@@ -44,7 +40,6 @@ export class JuntasPage {
     this.menuCtrl.toggle();
   }
   descripjjvv(junta: any) {
-    console.log(junta.nombre);
     this.navCtrl.push(DescripJvPage,{ 'junta':junta });
   }
 

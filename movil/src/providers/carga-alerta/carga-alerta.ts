@@ -1,3 +1,4 @@
+import { DbProvider } from './../db/db';
 import { LoginProvider } from './../login/login';
 import { Alerta } from './../../models/alerta';
 import { Injectable } from '@angular/core';
@@ -13,32 +14,29 @@ import * as firebase from 'firebase';
 @Injectable()
 export class CargaAlertaProvider {
   private ALERTAS: string = "alertas";
-  lastKey:string = null;
-  private fecha = new Date();
-  private Nfecha = new Date(this.fecha.getDate() + 1506698739642)
 
-  constructor(public afDB: AngularFireDatabase, private login: LoginProvider) {
-    console.log('Hello CargaAlertaProvider Provider');
-    console.log(this.Nfecha.toString())
-    console.log(firebase.database.ServerValue.TIMESTAMP)
+  constructor(private db: DbProvider, private login: LoginProvider) {
   }
 
   cargar_alerta(tipo:string, descrip:string, lat:number, lon:number){
     
         let promesa = new Promise((resolve, reject)=>{
-          let alerta:Alerta = {
-            tipo: tipo,
-            descripcion: descrip,
-            lat: lat,
-            lon: lon,
-            tiempo: firebase.database.ServerValue.TIMESTAMP,
-            usuario: this.login.getUser(),
-            junta:''
-          };
-          let $key = this.afDB.database.ref('/alertas').push( alerta ).key;
-          alerta.$key = $key;
-          console.log(alerta.$key);
-          resolve();
+          this.db.getJuntaUsuario().then((junta) => {
+            let alerta:Alerta = {
+              tipo: tipo,
+              descripcion: descrip,
+              lat: lat,
+              lon: lon,
+              tiempo: firebase.database.ServerValue.TIMESTAMP,
+              usuario: this.login.getUser().uid,
+              junta:junta as string
+            };
+            this.db.nuevaAlerta(alerta).then(()=>{
+              resolve();
+            })
+            
+          });
+          
         });
     
         return promesa;

@@ -21,12 +21,12 @@
 
 
 <ion-content padding>
-  <ion-card *ngFor="let junta of juntas | async">
+  <ion-card class="esquinas-redondas" *ngFor="let junta of juntas | async"  (click)="descripjjvv(junta)">
     <img [src]="junta.foto" />
     <div class="card-title" (click)="descripjjvv(junta)">{{junta.nombre}}</div>
     <div class="card-subtitle">Presidente: {{junta.presidente}}</div>
-      <ion-card-content (click)="descripjjvv(junta)">
+      <!-- <ion-card-content (click)="descripjjvv(junta)">
         
-      </ion-card-content>
+      </ion-card-content> -->
   </ion-card>
 </ion-content>

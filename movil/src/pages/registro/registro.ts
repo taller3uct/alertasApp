@@ -1,6 +1,8 @@
+import { Usuario } from './../../models/usuario';
+import { ViewController, LoadingController } from 'ionic-angular';
+import { DbProvider } from './../../providers/db/db';
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
-import { Usuario } from '../../models/usuario';
 import { LoginProvider } from '../../providers/login/login';
 import { HomePage } from '../home/home'
 
@@ -18,19 +20,26 @@ import { HomePage } from '../home/home'
 export class RegistroPage {
 
   usuario = {} as Usuario;
+  clave1 = '';
   clave2 = '';
+  juntas;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private _login:LoginProvider) {
-  }
-
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad RegistroPage');
+  constructor(public navCtrl: NavController, private _login:LoginProvider, private db: DbProvider, public view: ViewController, private loader: LoadingController) {
+    this.juntas = this.db.getJuntas();
   }
 
   registrar(){
-    if(this.usuario.clave = this.clave2){
-      this._login.registrar(this.usuario).then(data=>{
-        this.navCtrl.setRoot(HomePage);
+    if(this.clave1 = this.clave2){
+      const loader = this.loader.create({
+        content:"Registrando..."
+      });
+      loader.present();
+      this._login.registrar(this.usuario,this.clave1).then(data=>{
+        this.db.nuevoUsuario(this.usuario,data.uid).then(()=>{
+          loader.dismiss();
+          this.navCtrl.setRoot(HomePage);
+        })
+        
       }).catch(error=>{
         console.error(error);
       });

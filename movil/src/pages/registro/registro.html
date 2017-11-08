@@ -11,19 +11,30 @@
 </ion-header>
 <ion-content padding>
     <form (ngSubmit)="registrar()" #loginForm="ngForm">
+      <ion-item class="inputTop">
+        <ion-label stacked>Nombre</ion-label>
+        <ion-input type="text" [(ngModel)] = "usuario.nombre" name="nombre" required minlength="3"></ion-input>
+      </ion-item>
       <ion-item>
-        <ion-label floating>Correo</ion-label>
+        <ion-label stacked>Correo</ion-label>
         <ion-input type="email" [(ngModel)] = "usuario.correo" name="correo" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$"></ion-input>
       </ion-item>
       <ion-item>
-        <ion-label floating>Contraseña</ion-label>
-        <ion-input type="password" [(ngModel)] = "usuario.clave" name="clave" required minlength="6"></ion-input>
+        <ion-label stacked>Contraseña</ion-label>
+        <ion-input type="password" [(ngModel)] = "clave1" name="clave" required minlength="6"></ion-input>
       </ion-item>
-      <ion-item>
-          <ion-label floating>Reingresar Contraseña</ion-label>
+      <ion-item> 
+          <ion-label stacked>Reingresar Contraseña</ion-label>
           <ion-input type="password" [(ngModel)] = "clave2" name="clave2" required minlength="6"></ion-input>
-        </ion-item>
-      <button ion-button type="submit" [disabled]="!loginForm.valid">Registrar</button>
+      </ion-item>
+      <ion-item class="inputBottom">
+        <ion-label stacked>Junta de Vecinos</ion-label>
+        <ion-select [(ngModel)]="usuario.juntaVecino" name="juntaVecino" required>
+          <ion-option *ngFor="let junta of juntas | async" [value]="junta.nombre">{{junta.nombre}}</ion-option>
+        </ion-select>
+    </ion-item>
+      <button ion-button block strong round type="submit" [disabled]="!loginForm.valid">Registrar</button>
     </form>
+    <button ion-button block strong round type="button" color='light' (click)="view.dismiss()">Cancelar</button>
   </ion-content>
     

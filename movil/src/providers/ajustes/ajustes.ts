@@ -48,7 +48,6 @@ export class AjustesProvider {
         this.storage.set("ajustes", this.ajustes);
       });
     }else{
-      console.log('guarde en storage');
       localStorage.setItem("ajustes",JSON.stringify(this.ajustes));
     }
   }

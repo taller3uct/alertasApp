@@ -35,6 +35,7 @@ import { LocalNotifications } from '@ionic-native/local-notifications';
 import { BackgroundMode } from '@ionic-native/background-mode';
 
 import { LOCALE_ID } from "@angular/core";
+import { DbProvider } from '../providers/db/db';
 
 
 @NgModule({
@@ -86,7 +87,8 @@ import { LOCALE_ID } from "@angular/core";
     LoginProvider,
     LocalNotifications,
     BackgroundMode,
-    CallNumber, { provide: LOCALE_ID, useValue: "es" }
+    CallNumber, { provide: LOCALE_ID, useValue: "es" },
+    DbProvider
   ]
 })
 export class AppModule {

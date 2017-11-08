@@ -1,6 +1,6 @@
-import { Observable } from 'rxjs/Observable';
 import { Injectable } from '@angular/core';
 import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/toPromise';
 import { Usuario } from '../../models/usuario';
 import { AngularFireAuth } from 'angularfire2/auth';
 
@@ -13,50 +13,56 @@ import { AngularFireAuth } from 'angularfire2/auth';
 @Injectable()
 export class LoginProvider {
 
-  usuario:string;
+  usuario = {} as {correo:string, uid:string};
   logeado;
 
-  constructor(private afAuth:AngularFireAuth) {
+  constructor(private afAuth: AngularFireAuth) {
     this.afAuth.auth.setPersistence("local");
-    this.logeado =  this.afAuth.authState.subscribe(data => {
-      if(data){
-        this.usuario = data.uid
+    this.logeado = this.afAuth.authState.subscribe(data => {
+      if (data) {
+        this.usuario.uid = data.uid;
+        this.usuario.correo = data.email;
       }
     })
   }
 
-  isLogin(){
-    const promesa = new Promise((resolve,recject)=>{
-      const res = this.afAuth.authState.subscribe(data => {
-        console.log(this.usuario)
+  isLogin() {
+    return new Promise((resolve, recject) => {
+      this.afAuth.authState.subscribe(data => {
         resolve(data && data.email && data.uid);
       });
     })
-    return promesa;
   }
 
-  login(usuario:Usuario){
-    try {
-      const res = this.afAuth.auth.signInWithEmailAndPassword(usuario.correo,usuario.clave);
-      return res;
-      
-    } catch (error) {
-      console.log(error);
-    }
+  login(usuario, clave) {
+    return new Promise((resolve, reject) => {
+      this.afAuth.auth.signInWithEmailAndPassword(usuario, clave).then(data=>{
+        this.usuario.correo = data.email;
+        this.usuario.uid = data.uid;
+        resolve();
+      }).catch(()=>reject())
+    })
+    // try {
+    //   const res = this.afAuth.auth.signInWithEmailAndPassword(usuario.correo, usuario.clave).;
+    //   return res;
+
+    // } catch (error) {
+    //   console.log(error);
+    // }
   }
 
-  logout(){
+  logout() {
     this.logeado.unsubscribe();
     const res = this.afAuth.auth.signOut();
     return res;
   }
 
-  registrar(usuario:Usuario){
-    const res = this.afAuth.auth.createUserWithEmailAndPassword(usuario.correo,usuario.clave);
+  registrar(usuario: Usuario,clave) {
+    const res = this.afAuth.auth.createUserWithEmailAndPassword(usuario.correo, clave);
     return res;
   }
 
-  getUser(){
+  getUser() {
     return this.usuario;
   }
 

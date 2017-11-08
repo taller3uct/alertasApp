@@ -1,3 +1,5 @@
+import { Usuario } from './../models/usuario';
+import { DbProvider } from './../providers/db/db';
 import { MisAlertasPage } from './../pages/mis-alertas/mis-alertas';
 import { Component } from '@angular/core';
 import { Platform, NavController, MenuController } from 'ionic-angular';
@@ -17,7 +19,8 @@ export class MyApp {
   home = HomePage;
   vecinos = JuntasPage;
   misAlertas = MisAlertasPage
-  constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen, private _ajustes: AjustesProvider, private _login:LoginProvider, private menuCtrl:MenuController) {
+  nombreUsuario;
+  constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen, private _ajustes: AjustesProvider, private _login:LoginProvider, private menuCtrl:MenuController, private db:DbProvider) {
     platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
@@ -33,6 +36,11 @@ export class MyApp {
             else {
               this.rootPage = LoginPage;
             }
+
+
+            this.db.getUsuario().then(usuario => {
+              this.nombreUsuario = usuario.nombre
+            })
           })
           
         }

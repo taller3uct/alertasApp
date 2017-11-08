@@ -1,4 +1,5 @@
 export interface Usuario {
     correo:string;
-    clave:string;
+    nombre:string;
+    juntaVecino: string;
 }

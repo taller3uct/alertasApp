@@ -19,10 +19,10 @@
 
 
 <ion-content padding>
-    <ion-card *ngFor="let alerta of (alertas | async)?.reverse()">
-        <agm-map [latitude]="alerta.lat" [longitude]="alerta.lon" [zoom]="17" [scrollwheel]="false" [mapDraggable]="false">
+    <ion-card class="esquinas-redondas" *ngFor="let alerta of (alertas | async)?.reverse()">
+        <!-- <agm-map [latitude]="alerta.lat" [longitude]="alerta.lon" [zoom]="17" [scrollwheel]="false" [mapDraggable]="false">
           <agm-marker [latitude]="alerta.lat" [longitude]="alerta.lon"></agm-marker>
-        </agm-map>
+        </agm-map> -->
         <ion-card-content (click)="volver(alerta)">
           <ion-card-title>{{ alerta.tipo }}</ion-card-title>
           <p>{{ alerta.descripcion }}</p>

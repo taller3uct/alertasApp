@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams, LoadingController } from 'ionic-angular';
+import { LoadingController, ModalController, NavController } from 'ionic-angular';
 import { Usuario } from '../../models/usuario';
 import { LoginProvider } from '../../providers/login/login';
 import { RegistroPage } from '../registro/registro';
@@ -19,34 +19,32 @@ import { HomePage } from '../home/home';
 export class LoginPage {
   estado = "";
 
-  usuario = {} as Usuario;
+  usuario;
+  clave;
 
   imagen = "assets/img/iconoAlarma.png";
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private _login:LoginProvider, private loadingCtrl:LoadingController) {
+  constructor(private navCtrl: NavController, private modalCtrl: ModalController, private _login:LoginProvider, private loadingCtrl:LoadingController) {
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad LoginPage');
-  }
+  ionViewDidLoad() {}
 
   login(){
     let loader = this.loadingCtrl.create({
       content: "Entrando..."
     });
     loader.present();
-    this._login.login(this.usuario).then(data=>{
+    this._login.login(this.usuario,this.clave).then(()=>{
       loader.dismiss();
       this.navCtrl.setRoot(HomePage);
-    }).catch(error=>{
+    }).catch(()=>{
       loader.dismiss();
-      console.error(error)
       this.estado = "La contraseña no es válida o el usuario no tiene una contraseña.";
     })
   }
 
   registrar(){
-    this.navCtrl.push(RegistroPage)
+    this.modalCtrl.create(RegistroPage).present();
   }
 
 }

@@ -42,7 +42,6 @@ export class SubirPage {
     });
     loader.present();
     this._cas.cargar_alerta(this.tipo,this.descripcion,this.lat,this.lon).then(()=>{
-      console.log("sali");
       loader.dismiss();
       this.cerrar_modal();
     },(error)=>{

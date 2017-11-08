@@ -17,7 +17,7 @@
     <ion-content padding>
     
       <ion-list>
-        <ion-item>
+        <ion-item class="inputTop">
           <ion-label>Tipo de Alerta</ion-label>
           <ion-select [(ngModel)]="tipo" interface="popover" placeholder="Policial">
             <ion-option value="Policial">Policial</ion-option>
@@ -25,13 +25,13 @@
             <ion-option value="Incendio">Incendio</ion-option>
           </ion-select>
         </ion-item>
-        <ion-item>
+        <ion-item class="inputBottom">
           <ion-label floating>Descripcion</ion-label>
           <ion-input type="text" [(ngModel)]="descripcion"></ion-input>
         </ion-item>
       </ion-list>
     
-      <button ion-button icon-end block (click)="subir_alerta()">
+      <button ion-button icon-end block strong round (click)="subir_alerta()">
         Enviar
         <ion-icon name="send"></ion-icon>
       </button>

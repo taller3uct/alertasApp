@@ -1,3 +1,4 @@
+
 // Ionic Variables and Theming. For more info, please see:
 // http://ionicframework.com/docs/theming/
 
@@ -34,12 +35,13 @@ $app-direction: ltr;
 // The "primary" color is the only required color in the map.
 
 $colors: (
-  primary:    #488aff,
+  primary:    #f53d3d,
   secondary:  #32db64,
   danger:     #f53d3d,
   light:      #f4f4f4,
   dark:       #222
 );
+
 
 
 // App iOS Variables
@@ -86,3 +88,32 @@ $colors: (
 
 @import "roboto";
 @import "noto-sans";
+
+.panel {
+  background: rgb(190, 190, 190) !important;
+  border-radius: 20px !important;
+  padding: 20px;
+}
+
+.inputTop {
+  border-radius: 20px 20px 0px 0px !important;  
+}
+.inputBottom {
+  border-radius: 0px 00px 20px 20px !important;  
+}
+
+.esquinas-redondas {
+  border-radius: 20px !important;
+}
+
+.btn-gris {
+  background: rgb(190, 190, 190) !important;
+}
+
+//$toolbar-background: rgb(190, 190, 190);
+
+ion-content {
+  background: grey !important; 
+}
+
+

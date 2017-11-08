@@ -16,7 +16,7 @@
   <ion-fab top right>
     <button ion-fab color="danger" (click)="motrar_modal()"><ion-icon name="alert"></ion-icon></button>
   </ion-fab>
-<ion-card *ngFor="let alerta of (alertas | async)?.reverse()">
+<ion-card class="esquinas-redondas" *ngFor="let alerta of (alertas | async)?.reverse()">
   <agm-map [latitude]="alerta.lat" [longitude]="alerta.lon" [zoom]="17" [scrollwheel]="false" [mapDraggable]="false">
     <agm-marker [latitude]="alerta.lat" [longitude]="alerta.lon"></agm-marker>
   </agm-map>

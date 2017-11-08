@@ -6,13 +6,17 @@
         </ion-header>
         <ion-content>
           <ion-list>
-            <button ion-item (click)="abrirPage(home)">
+            <ion-item class="btn-gris">
+              <p>Bienvenido</p>
+              <h3>{{ nombreUsuario }}</h3>
+            </ion-item>
+            <button ion-button full strong (click)="abrirPage(home)">
               Ultimas Alertas
             </button>
-            <button ion-item (click)="abrirPage(misAlertas)">
+            <button ion-button full strong icon-right (click)="abrirPage(misAlertas)">
                 Mis Alertas
               </button>
-            <button ion-item (click)="abrirPage(vecinos)">
+            <button ion-button full strong icon-right (click)="abrirPage(vecinos)">
               Junta de vecinos
             </button>
             <!-- <button ion-item>

@@ -21,13 +21,13 @@
             <form (ngSubmit)="login()" #loginForm="ngForm">
               <ion-item class="inputTop">
                 <ion-label stacked>Correo</ion-label>
-                <ion-input type="email" [(ngModel)]="usuario.correo" name="correo" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$"></ion-input>
+                <ion-input type="email" [(ngModel)]="usuario" name="correo" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$"></ion-input>
               </ion-item>
               <ion-item class="inputBottom">
                 <ion-label stacked>Contraseña</ion-label>
-                <ion-input type="password" [(ngModel)]="usuario.clave" name="clave" required minlength="6"></ion-input>
+                <ion-input type="password" [(ngModel)]="clave" name="clave" required minlength="6"></ion-input>
               </ion-item>
-              <button ion-button color="danger" [disabled]="!loginForm.valid" block>Ingresar</button>
+              <button strong ion-button color="danger" [disabled]="!loginForm.valid" block>Ingresar</button>
             </form>
           </ion-col>
           <ion-col></ion-col>
@@ -35,7 +35,7 @@
           <ion-row>
             <ion-col></ion-col>
             <ion-col col-12 col-sm-9 col-md-6 col-lg-4 col-xl-2 text-center>
-              <a (click)="registrar()">Crear Nueva Cuenta</a>
+              <button ion-button strong clear color="light" (click)="registrar()">Crear Nueva Cuenta</button>
             </ion-col>
             <ion-col></ion-col>
           </ion-row>
