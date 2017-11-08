@@ -3,7 +3,7 @@ import { Usuario } from './../models/usuario';
 import { DbProvider } from './../providers/db/db';
 import { MisAlertasPage } from './../pages/mis-alertas/mis-alertas';
 import { Component, ViewChild } from '@angular/core';
-import { Platform, NavController, MenuController, Nav } from 'ionic-angular';
+import { Platform, MenuController, Nav } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { HomePage } from '../pages/home/home';
