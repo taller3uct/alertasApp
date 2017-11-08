@@ -9,6 +9,9 @@
             <ion-item class="btn-gris">
               <p>Bienvenido</p>
               <h3>{{ nombreUsuario }}</h3>
+              <button ion-button outline item-end (click)="logout()" menuToggle>
+                  Salir
+                </button>
             </ion-item>
             <button ion-button full strong (click)="abrirPage(home)">
               Ultimas Alertas

@@ -1,3 +1,4 @@
+import { MyApp } from './../../app/app.component';
 import { Usuario } from './../../models/usuario';
 import { Alerta } from './../../models/alerta';
 import { LoginPage } from './../../pages/login/login';
@@ -76,6 +77,13 @@ export class DbProvider {
         resolve(user.juntaVecino)
       })
     });
+  }
+
+  setUsuario() {
+    this.getUsuario().then(usuario=>{
+      const user = usuario as Usuario;
+      this.login.usuarioSubject.next(user)
+    })
   }
 
 }

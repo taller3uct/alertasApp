@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import 'rxjs/add/operator/map';
-import 'rxjs/add/operator/toPromise';
+import { Subject } from 'rxjs/subject';
 import { Usuario } from '../../models/usuario';
 import { AngularFireAuth } from 'angularfire2/auth';
 
@@ -12,6 +12,8 @@ import { AngularFireAuth } from 'angularfire2/auth';
 */
 @Injectable()
 export class LoginProvider {
+
+  usuarioSubject = new Subject()
 
   usuario = {} as {correo:string, uid:string};
   logeado;
@@ -39,6 +41,7 @@ export class LoginProvider {
       this.afAuth.auth.signInWithEmailAndPassword(usuario, clave).then(data=>{
         this.usuario.correo = data.email;
         this.usuario.uid = data.uid;
+        
         resolve();
       }).catch(()=>reject())
     })

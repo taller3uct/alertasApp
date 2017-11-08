@@ -98,7 +98,12 @@ export class HomePage {
     //   }
     // });
     //aqui es un cambio
+    
+  }
+
+  ionViewDidLoad() {
     this.alertas = this.db.getAlertas() as Observable<Alerta[]>;
+    this.db.setUsuario();
   }
 
 
@@ -157,12 +162,12 @@ export class HomePage {
     this.menuCtrl.toggle();
   }
 
-  logout() {
-    this.navCtrl.setRoot(LoginPage).then(() => {
-      this._login.logout();
-    })
-    //this._login.logout();
-  }
+  // logout() {
+  //   this.navCtrl.setRoot(LoginPage).then(() => {
+  //     this._login.logout();
+  //   })
+  //   //this._login.logout();
+  // }
 
 
   llamar(tipo) {
