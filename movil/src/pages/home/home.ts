@@ -65,7 +65,6 @@ export class HomePage {
     //   silent: true
     // })
 
-<<<<<<< HEAD
 
 
 
@@ -98,36 +97,6 @@ export class HomePage {
     //     this.navCtrl.setRoot(LoginPage);
     //   }
     // });
-=======
-    this.posicion = this.pos.getPos().map(a => {
-      let coords = a.coords;
-      return coords;
-    })
-    this.pos.iniciar_localizacion().then(data => {
-      this.lat = this.pos.latitud()
-      this.lon = this.pos.longitud()
-      this.tempMarker.lat = this.lat;
-      this.tempMarker.lon = this.lon;
-    })
-    this._login.isLogin().then(res => {
-      if (res) {
-        this.alertas = afDB.list('/alertas', ref => ref.orderByChild('tiempo').startAt(this.ultimos())).valueChanges();
-        afDB.database.ref('/alertas').on('value', (childSnapshot) => {
-          if (this.band) {
-            console.log("Nueva alerta serca de ti!!!");
-            this.localNotifications.schedule({
-              id: 1,
-              text: 'Nueva alerta cerca de ti!!!'
-            });
-          }
-          this.band = true;
-        });
-
-      } else {
-        this.navCtrl.setRoot(LoginPage);
-      }
-    });
->>>>>>> e8a8522b41e4e20c910562614acf832a1c4fc741
     //aqui es un cambio
     this.alertas = this.db.getAlertas() as Observable<Alerta[]>;
   }
@@ -176,10 +145,6 @@ export class HomePage {
     modal.present();
   }
 
-<<<<<<< HEAD
-=======
-
->>>>>>> e8a8522b41e4e20c910562614acf832a1c4fc741
   openMenu() {
     this.menuCtrl.open();
   }

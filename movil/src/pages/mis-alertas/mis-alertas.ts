@@ -51,7 +51,6 @@ export class MisAlertasPage {
     modal.present();
   }
 
-  
 
   openMenu() {
     this.menuCtrl.open();
