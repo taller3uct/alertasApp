@@ -4,8 +4,8 @@ import { Alerta } from './../../models/alerta';
 import { UbicacionProvider } from './../../providers/ubicacion/ubicacion';
 import { Component } from '@angular/core';
 import { ModalController, MenuController, ActionSheetController, NavController } from 'ionic-angular';
-import { LoginPage } from "../login/login";
-import { DescripPage } from "../descrip/descrip";
+// import { LoginPage } from "../login/login";
+// import { DescripPage } from "../descrip/descrip";
 import { CallNumber } from '@ionic-native/call-number';
 import 'rxjs/add/operator/map';
 
@@ -51,7 +51,7 @@ export class HomePage {
     // private afDB: AngularFireDatabase,
     private modalCtrl: ModalController,
     private menuCtrl: MenuController,
-    private _login: LoginProvider,
+    // private _login: LoginProvider,
     private pos: UbicacionProvider,
     private callNumber: CallNumber,
     private actionSheetCtrl: ActionSheetController,
