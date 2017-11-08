@@ -71,9 +71,9 @@ export class DbProvider {
 
   getJuntaUsuario(){
     return new Promise((resolve,reject)=>{
-      this.getUsuario().once('value').then((snapshot) => {
-        resolve(snapshot.val().juntaVecino as string);
-      });
+      this.getUsuario().then(usuarios => {
+        resolve(usuario.juntaVecino)
+      })
     });
   }
 
