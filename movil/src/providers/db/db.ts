@@ -71,8 +71,9 @@ export class DbProvider {
 
   getJuntaUsuario(){
     return new Promise((resolve,reject)=>{
-      this.getUsuario().then(usuarios => {
-        resolve(usuario.juntaVecino)
+      this.getUsuario().then(usuario => {
+        const user = usuario as Usuario
+        resolve(user.juntaVecino)
       })
     });
   }

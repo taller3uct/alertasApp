@@ -39,7 +39,8 @@ export class MyApp {
 
 
             this.db.getUsuario().then(usuario => {
-              this.nombreUsuario = usuario.nombre
+              const user = usuario as Usuario
+              this.nombreUsuario = user.nombre
             })
           })
           
