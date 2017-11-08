@@ -19,14 +19,19 @@
 
 
 <ion-content padding>
-    <ion-card class="esquinas-redondas" *ngFor="let alerta of (alertas | async)?.reverse()">
+    <ion-card class="esquinas-redondas" *ngFor="let alerta of (alertas | async)?.reverse()" (click)="volver(alerta)">
         <!-- <agm-map [latitude]="alerta.lat" [longitude]="alerta.lon" [zoom]="17" [scrollwheel]="false" [mapDraggable]="false">
           <agm-marker [latitude]="alerta.lat" [longitude]="alerta.lon"></agm-marker>
         </agm-map> -->
-        <ion-card-content (click)="volver(alerta)">
-          <ion-card-title>{{ alerta.tipo }}</ion-card-title>
+        <ion-item>
+          <!-- <ion-icon name="pin" item-left large color="danger" ></ion-icon> -->
+          <h2>{{ alerta.tipo }}</h2>
           <p>{{ alerta.descripcion }}</p>
           <p>{{ alerta.tiempo | date:'EEEE d MMMM y H:mm:ss' }}</p>
-        </ion-card-content>
+          <ion-thumbnail item-start>
+            <img [src]="'assets/img/'+alerta.tipo+'_.png'">
+          </ion-thumbnail>
+          <!-- <ion-img item-right [src]="'assets/img/'+alerta.tipo+'_.png'"></ion-img> -->
+        </ion-item>
       </ion-card>
 </ion-content>

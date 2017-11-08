@@ -13,14 +13,33 @@
   <ion-fab top right>
     <button ion-fab color="danger" (click)="motrar_modal()"><ion-icon name="alert"></ion-icon></button>
   </ion-fab>
-<ion-card class="esquinas-redondas" *ngFor="let alerta of (alertas | async)?.reverse()">
-  <agm-map [latitude]="alerta.lat" [longitude]="alerta.lon" [zoom]="17" [scrollwheel]="false" [mapDraggable]="false">
+<ion-card class="esquinas-redondas" *ngFor="let alerta of (alertas | async)?.reverse()" (click)="descripAlert(alerta)">
+  <!-- <agm-map [latitude]="alerta.lat" [longitude]="alerta.lon" [zoom]="17" [scrollwheel]="false" [mapDraggable]="false">
     <agm-marker [latitude]="alerta.lat" [longitude]="alerta.lon"></agm-marker>
-  </agm-map>
+  </agm-map> -->
+  <ion-item>
+    <!-- <ion-icon name="pin" item-left large color="danger" ></ion-icon> -->
+    <h2>{{ alerta.tipo }}</h2>
+    <p>{{ alerta.descripcion }}</p>
+    <p>{{ alerta.tiempo | date:'EEEE d MMMM y H:mm:ss' }}</p>
+    <ion-thumbnail item-start>
+      <img [src]="'assets/img/'+alerta.tipo+'_.png'">
+    </ion-thumbnail>
+    <!-- <ion-img item-right [src]="'assets/img/'+alerta.tipo+'_.png'"></ion-img> -->
+  </ion-item>
+
+  <!-- <ion-item>
+    <span item-left>18 min</span>
+    <span item-left>(2.6 mi)</span>
+    <button ion-button icon-left clear item-end>
+      <ion-icon name="navigate"></ion-icon>
+      Start
+    </button>
+  </ion-item>
   <ion-card-content (click)="descripAlert(alerta)">
     <ion-card-title>{{ alerta.tipo }}</ion-card-title>
     <p>{{ alerta.descripcion }}</p>
     <p>{{ alerta.tiempo | date:'EEEE d MMMM y H:mm:ss' }}</p>
-  </ion-card-content>
+  </ion-card-content> -->
 </ion-card>
 </ion-content>
