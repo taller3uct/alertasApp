@@ -22,7 +22,7 @@
     "@angular/platform-browser": "4.4.3",
     "@angular/platform-browser-dynamic": "4.4.3",
     "@ionic-native/background-mode": "^4.3.3",
-    "@ionic-native/call-number": "^4.3.3",
+    "@ionic-native/call-number": "^4.4.0",
     "@ionic-native/core": "4.3.0",
     "@ionic-native/geolocation": "^4.3.1",
     "@ionic-native/local-notifications": "^4.3.3",
