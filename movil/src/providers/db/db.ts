@@ -1,7 +1,7 @@
-import { MyApp } from './../../app/app.component';
+//import { MyApp } from './../../app/app.component';
 import { Usuario } from './../../models/usuario';
 import { Alerta } from './../../models/alerta';
-import { LoginPage } from './../../pages/login/login';
+//import { LoginPage } from './../../pages/login/login';
 import { LoginProvider } from './../login/login';
 import { AngularFireDatabase } from 'angularfire2/database';
 import { Injectable } from '@angular/core';

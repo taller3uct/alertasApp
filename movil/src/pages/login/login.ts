@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { LoadingController, ModalController, NavController } from 'ionic-angular';
-import { Usuario } from '../../models/usuario';
+//import { Usuario } from '../../models/usuario';
 import { LoginProvider } from '../../providers/login/login';
 import { RegistroPage } from '../registro/registro';
 import { HomePage } from '../home/home';

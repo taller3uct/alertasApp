@@ -2,7 +2,7 @@ import { DbProvider } from './../db/db';
 import { LoginProvider } from './../login/login';
 import { Alerta } from './../../models/alerta';
 import { Injectable } from '@angular/core';
-import { AngularFireDatabase } from 'angularfire2/database';
+//import { AngularFireDatabase } from 'angularfire2/database';
 import * as firebase from 'firebase';
 
 /*
@@ -13,7 +13,7 @@ import * as firebase from 'firebase';
 */
 @Injectable()
 export class CargaAlertaProvider {
-  private ALERTAS: string = "alertas";
+  //private ALERTAS: string = "alertas";
 
   constructor(private db: DbProvider, private login: LoginProvider) {
   }
@@ -44,11 +44,3 @@ export class CargaAlertaProvider {
 
 }
 
-interface subirAlerta{
-  $key?:string
-  tipo:string
-  descripcion:string
-  lat:number
-  lon:number
-  tiempo:object
-}

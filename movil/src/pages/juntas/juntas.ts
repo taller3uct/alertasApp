@@ -1,8 +1,8 @@
 import { DbProvider } from './../../providers/db/db';
-import { DescripPage } from './../descrip/descrip';
+//import { DescripPage } from './../descrip/descrip';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, MenuController } from 'ionic-angular';
-import { AngularFireDatabase } from 'angularfire2/database';
+//import { AngularFireDatabase } from 'angularfire2/database';
 import { Observable } from 'rxjs/Observable';
 import { DescripJvPage } from "../descrip-jv/descrip-jv";
 
@@ -20,7 +20,7 @@ import { DescripJvPage } from "../descrip-jv/descrip-jv";
 })
 export class JuntasPage {
   juntas: Observable<any[]>
-  constructor(public navCtrl: NavController, public navParams: NavParams, private menuCtrl: MenuController,  private afDB: AngularFireDatabase, private db: DbProvider) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private menuCtrl: MenuController, private db: DbProvider) {
     this.juntas = this.db.getJuntas();
   }
 

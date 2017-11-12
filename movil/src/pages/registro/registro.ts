@@ -2,7 +2,7 @@ import { Usuario } from './../../models/usuario';
 import { ViewController, LoadingController } from 'ionic-angular';
 import { DbProvider } from './../../providers/db/db';
 import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import { NavController } from 'ionic-angular';
 import { LoginProvider } from '../../providers/login/login';
 import { HomePage } from '../home/home'
 

@@ -1,14 +1,14 @@
 import { DbProvider } from './../../providers/db/db';
 import { DescripPage } from './../descrip/descrip';
-import { LoginPage } from './../login/login';
+//import { LoginPage } from './../login/login';
 import { UbicacionProvider } from './../../providers/ubicacion/ubicacion';
-import { LoginProvider } from './../../providers/login/login';
-import { AngularFireDatabase } from 'angularfire2/database';
-import { Geoposition } from '@ionic-native/geolocation';
+//import { LoginProvider } from './../../providers/login/login';
+//import { AngularFireDatabase } from 'angularfire2/database';
+//import { Geoposition } from '@ionic-native/geolocation';
 import { Alerta } from './../../models/alerta';
 import { Observable } from 'rxjs/Observable';
 import { Component } from '@angular/core';
-import { NavController, NavParams, ModalController, MenuController } from 'ionic-angular';
+import { NavController, ModalController, MenuController } from 'ionic-angular';
 
 /**
  * Generated class for the MisAlertasPage page.
@@ -28,7 +28,6 @@ export class MisAlertasPage {
   lon;
 
   constructor(public navCtrl: NavController, 
-              private afDB: AngularFireDatabase, 
               private modalCtrl: ModalController, 
               private menuCtrl: MenuController, 
               private db: DbProvider,

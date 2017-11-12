@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, LoadingController } from 'ionic-angular';
+import { IonicPage, NavParams, LoadingController } from 'ionic-angular';
 import { ViewController } from "ionic-angular";
 import { CargaAlertaProvider } from "../../providers/carga-alerta/carga-alerta";
-import { UbicacionProvider } from "../../providers/ubicacion/ubicacion";
+//import { UbicacionProvider } from "../../providers/ubicacion/ubicacion";
 
 /**
  * Generated class for the SubirPage page.
@@ -23,7 +23,7 @@ export class SubirPage {
   lat:number;
   lon:number;
 
-  constructor(private viewCtrl: ViewController, private navParams: NavParams, private _cas:CargaAlertaProvider, private loadingCtrl:LoadingController, private _ubicacion:UbicacionProvider) {
+  constructor(private viewCtrl: ViewController, private navParams: NavParams, private _cas:CargaAlertaProvider, private loadingCtrl:LoadingController) {
     let coords = this.navParams.get("coords");
     console.log(coords);
     

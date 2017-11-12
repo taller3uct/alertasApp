@@ -12,7 +12,7 @@ import 'rxjs/add/operator/map';
 // import { AngularFireDatabase } from 'angularfire2/database';
 import { Observable } from 'rxjs/Observable';
 
-import { LoginProvider } from "../../providers/login/login";
+//import { LoginProvider } from "../../providers/login/login";
 
 // import { LocalNotifications } from '@ionic-native/local-notifications';
 // import { BackgroundMode } from '@ionic-native/background-mode';

@@ -2,7 +2,7 @@ import { ViewController } from 'ionic-angular';
 import { Alerta } from './../../models/alerta';
 import { Observable } from 'rxjs/Observable';
 import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import { NavParams } from 'ionic-angular';
 
 /**
  * Generated class for the UltimosPage page.
