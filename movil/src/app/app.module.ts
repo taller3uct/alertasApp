@@ -33,6 +33,7 @@ import { LoginProvider } from '../providers/login/login';
 import { CallNumber } from '@ionic-native/call-number';
 import { LocalNotifications } from '@ionic-native/local-notifications';
 import { BackgroundMode } from '@ionic-native/background-mode';
+import { ScreenOrientation } from '@ionic-native/screen-orientation';
 
 import { LOCALE_ID } from "@angular/core";
 import { DbProvider } from '../providers/db/db';
@@ -54,7 +55,9 @@ import { DbProvider } from '../providers/db/db';
   ],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(MyApp),
+    IonicModule.forRoot(MyApp,{
+      backButtonText: 'Atras'
+    }),
     IonicStorageModule.forRoot(),
     AngularFireModule.initializeApp(firebaseConfig),
     AngularFireDatabaseModule,
@@ -88,7 +91,8 @@ import { DbProvider } from '../providers/db/db';
     LocalNotifications,
     BackgroundMode,
     CallNumber, { provide: LOCALE_ID, useValue: "es" },
-    DbProvider
+    DbProvider,
+    ScreenOrientation
   ]
 })
 export class AppModule {

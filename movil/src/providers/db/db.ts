@@ -26,7 +26,7 @@ export class DbProvider {
           if (band) {
             localNotifications.schedule({
               id: 1,
-              text: 'Nueva alerta serca de ti!!!'
+              text: 'Nueva alerta cerca de ti!!!'
             });
           }
           band = true;

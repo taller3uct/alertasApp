@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { LoadingController, ModalController, NavController } from 'ionic-angular';
+import { LoadingController, ModalController, NavController, AlertController } from 'ionic-angular';
 //import { Usuario } from '../../models/usuario';
 import { LoginProvider } from '../../providers/login/login';
 import { RegistroPage } from '../registro/registro';
@@ -24,7 +24,7 @@ export class LoginPage {
 
   imagen = "assets/img/iconoAlarma.png";
 
-  constructor(private navCtrl: NavController, private modalCtrl: ModalController, private _login:LoginProvider, private loadingCtrl:LoadingController) {
+  constructor(private navCtrl: NavController, private modalCtrl: ModalController, private _login:LoginProvider, private loadingCtrl:LoadingController, private alertCtrl:AlertController) {
   }
 
   ionViewDidLoad() {}
@@ -39,7 +39,12 @@ export class LoginPage {
       this.navCtrl.setRoot(HomePage);
     }).catch(()=>{
       loader.dismiss();
-      this.estado = "La contraseña no es válida o el usuario no tiene una contraseña.";
+      let alert = this.alertCtrl.create({
+        title: 'Error al iniciar sesion',
+        subTitle: 'El correo o la contraseña no son validos',
+        buttons: ['Bueno']
+      });
+      alert.present();
     })
   }
 
